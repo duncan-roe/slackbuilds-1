@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for sage-bin
 
 # Copyright 2018 Duncan Roe, Melbourne, Australia
@@ -62,7 +62,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $PKG
 mkdir root proc opt
-tar xvf $CWD/sage-$VERSION-Debian_GNU_Linux_$DEBVERSION-$ARCH.tar.bz2 -C $PKG/opt
+tar xf $CWD/sage-$VERSION-Debian_GNU_Linux_$DEBVERSION-$ARCH.tar.bz2 -C $PKG/opt
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
