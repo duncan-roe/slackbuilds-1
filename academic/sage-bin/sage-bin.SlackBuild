@@ -63,6 +63,8 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $PKG
 mkdir root proc opt
 tar xf $CWD/sage-$VERSION-Debian_GNU_Linux_$DEBVERSION-$ARCH.tar.bz2 -C $PKG/opt
+[ ! -r $CWD/$VERSION.patch ] || patch -p0 < $CWD/$VERSION.patch
+[ ! -r $CWD/${VERSION}_sh ] || . $CWD/${VERSION}_sh
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
