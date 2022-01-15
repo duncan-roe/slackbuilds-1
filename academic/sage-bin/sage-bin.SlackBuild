@@ -75,6 +75,7 @@ find -L . \
 mkchroot .
 addchroot . python2 sed util-linux
 chroot . <<////
+export SAGE_BANNER=bare
 mount -t proc proc proc
 opt/SageMath/sage < /dev/null # Run sage patch system
 umount proc
