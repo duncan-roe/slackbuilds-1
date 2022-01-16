@@ -30,6 +30,8 @@ DEBVERSION=${DEBVERSION:-11}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+SLK_VERSION=${SLK_VERSION:-$(cat /etc/slackware-version|cut -d' ' -f2)}
+[ $SLK_VERSION = 14.2 ] && PYTHON=python || PYTHON=python2
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -73,7 +75,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 mkchroot .
-addchroot . python2 sed util-linux
+addchroot . $PYTHON sed util-linux
 chroot . <<////
 export SAGE_BANNER=bare
 mount -t proc proc proc
