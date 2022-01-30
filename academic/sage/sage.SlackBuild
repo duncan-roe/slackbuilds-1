@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for sage
 # Written by Jack Maddox <jack@auburn.edu>
 # Currently maintained by Christopher L Duston <christopher.duston@protonmail.com>
@@ -62,7 +62,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
-TMP=${TMP:-/var/tmp/SBo}
+TMP=${TMP:-/usr/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -90,10 +90,10 @@ mkdir -p $PKG/$SAGEROOT $PKG/usr/share/{applications,pixmaps} \
 LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}" \
        ./configure \
        --enable-build-as-root
-make build
+make -j$(($(nproc)+1)) || make || make -j$(($(nproc)+1)) build || make build
 
 # test all examples in the documentation (over 93,000 line of input)
-[ "${TEST:-no}" = "yes" ] && make test
+[ "${TEST:-no}" = "yes" ] && make -j$(($(nproc)+1)) test
 
 # build the pdf version of the documentation
 # (Note: this requires a LaTeX installation)
