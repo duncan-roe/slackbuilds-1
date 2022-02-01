@@ -90,7 +90,7 @@ mkdir -p $PKG/$SAGEROOT $PKG/usr/share/{applications,pixmaps} \
 LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}" \
        ./configure \
        --enable-build-as-root
-make build
+make -j$(($(nproc)+1)) build
 
 # test all examples in the documentation (over 93,000 line of input)
 [ "${TEST:-no}" = "yes" ] && make -j$(($(nproc)+1)) test
