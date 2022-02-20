@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for afdko
 
 # Copyright 2017 Duncan Roe, Melbourne, Australia
@@ -25,8 +25,8 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=afdko
-VERSION=${VERSION:-2.5.65322}
-BUILD=${BUILD:-3}
+VERSION=${VERSION:-3.8.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -62,7 +62,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 # This symlink is not required (but another one is, later)
 rm -f $PRGNAM-$VERSION/FDK/Tools/linux/AFDKOPython
