@@ -15,5 +15,3 @@ These get built using pip2tgz and installed. At the end of the build, they are
 uninstalled again. To keep these deps, run the build as
 
 KEEP_DEPS=yes ./Type1_to_OTF.SlackBuild
-
-(at build 2, python/lxml is also built because the SBo version is too old).
