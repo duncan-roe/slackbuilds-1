@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for Type1_to_OTF
 
 # Copyright 2017 Duncan Roe, Melbourne, Australia
@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=Type1_to_OTF
 VERSION=${VERSION:-1.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -64,7 +64,7 @@ set -e
 
 # Install dependencies that aren't in SBo or SBo pkg is too old
 #    !!! head -n must stay up to date with number of DOWNLOAD entries in .info
-for i in $(tail -n+5 $PRGNAM.info | head -n14 | rev | cut -f1 -d/ |
+for i in $(tail -n+5 $PRGNAM.info | head -n13 | rev | cut -f1 -d/ |
            sed -e 's/^\\ //' -e 's/^"//' | rev)
 do
   # Special-case zopfli

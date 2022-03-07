@@ -14,7 +14,6 @@ DOWNLOAD="https://github.com/duncan-roe/Type1_to_OTF/archive/v1.0/Type1_to_OTF-1
           https://files.pythonhosted.org/packages/c0/69/1ce8ecc807061e15901ea792d962d7f698aa0ce5259e8f680f86d0ec4213/defcon-0.10.0.zip \
           https://files.pythonhosted.org/packages/b8/4a/fe75a801004b26e7be7d8949410b19193f935c1ffbdd1f701f6f3dc4f806/fontMath-0.9.1.zip \
           https://files.pythonhosted.org/packages/91/74/014da6e9280844cec6a73a04e069d95740e5520fd9477afbf31208d0e2f4/psautohint-2.4.0.tar.gz \
-          https://files.pythonhosted.org/packages/cb/a5/803a55cae355bc2402492c6a1c23dc08117844e4a1c3a293b0ea19bca6fa/tqdm-4.63.0.tar.gz \
           https://files.pythonhosted.org/packages/46/23/5eadf42d61b32310c735d0d5e219073f39c18f7bca5c2143363e914927dd/ufonormalizer-0.6.1.zip"
 MD5SUM="33708ff7ff9342f4308c104e4f8ee342 \
         a83a339af4e862e770247d79c1e01f5f \
@@ -29,10 +28,9 @@ MD5SUM="33708ff7ff9342f4308c104e4f8ee342 \
         2038619e953ea0ed6f7e7d1ee9c9da12 \
         2edc7a58cf90f73503fa661e47002e01 \
         f626eb26eb635903b1f32f6c1dcf77e5 \
-        d82c5f135b75d6471f70d57d02372d76 \
         51f58faa5ef13fd2fca4aa041c29a290"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="afdko pip2tgz pytz unicodedata2 fonttools"
+REQUIRES="afdko pip2tgz pytz unicodedata2 fonttools tqdm"
 MAINTAINER="Duncan Roe"
 EMAIL="duncan_roe@optusnet.com.au"
