@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libbsd
 
 # Copyright 2020 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -93,7 +93,8 @@ CFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make install-strip DESTDIR=$PKG
+make -j$(($(nproc)+1)) install-strip DESTDIR=$PKG ||
+  make install-strip DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 
