@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copyright 2007-2008, Piter Punk, São Paulo, Brazil
-# Copyright 2017-2020, Andrew Clemons, Wellington New Zealand
+# Copyright 2017-2020,2022 Andrew Clemons, Wellington New Zealand
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,9 +24,9 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=dropbear
-VERSION=${VERSION:-2020.81}
+VERSION=${VERSION:-2022.82}
 SRCVERSION="DROPBEAR_$VERSION"
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -38,9 +38,6 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
-# the name of the created package would be, and then exit. This information
-# could be useful to other scripts.
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
@@ -98,34 +95,44 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-pututxline \
   --build=$ARCH-slackware-linux
 
-PROGRAMS="dropbear dbclient dropbearkey dropbearconvert"
-
-WITH_SCP=${WITH_SCP:-yes}
-
-if [ "$WITH_SCP" = "yes" ] ; then
-  PROGRAMS="$PROGRAMS scp"
-fi
+PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 
 make strip \
   PROGRAMS="$PROGRAMS" \
-  MULTI=1
+  MULTI=1 \
+  SCPPROGRESS=1
 
 make install \
   PROGRAMS="$PROGRAMS" \
   MULTI=1 \
+  SCPPROGRESS=1 \
   DESTDIR=$PKG
-
-find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
-  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+WITH_SCP=${WITH_SCP:-no}
+
+# 20220412 bkw: use relative symlinks.
+for i in $PROGRAMS; do
+  BIN=$PKG/usr/bin/$i
+  SBIN=$PKG/usr/sbin/$i
+
+  if [ "$i" = "scp" ] && [ "$WITH_SCP" != "yes" ] ; then
+    [ -L $BIN  ] && rm -f $BIN  && ln -s dropbearmulti $BIN.dropbear
+    [ -L $SBIN ] && rm -f $SBIN && ln -s ../bin/dropbearmulti $SBIN.dropbear
+  else
+    [ -L $BIN  ] && rm -f $BIN  && ln -s dropbearmulti $BIN
+    [ -L $SBIN ] && rm -f $SBIN && ln -s ../bin/dropbearmulti $SBIN
+  fi
+done
 
 mkdir -p $PKG/etc/rc.d
 cat $CWD/rc.dropbear.new > $PKG/etc/rc.d/rc.dropbear.new
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a CHANGES INSTALL LICENSE MULTI README SMALL $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a CHANGES LICENSE MULTI README SMALL $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
