@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # Slackware build script for utfcpp
 # Copyright 2014 Lionel Young USA
 # All rights reserved.
