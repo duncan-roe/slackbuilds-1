@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for xen
 
 # Copyright 2010, 2022  Mario Preksavec, Zagreb, Croatia
@@ -125,7 +125,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -196,7 +196,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-extra-qemuu-configure-args="$CONF_QEMUU" \
   --build=$ARCH-slackware-linux
 
-make install-xen \
+make -j$(($(nproc)+1)) install-xen \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \
@@ -206,7 +206,7 @@ make install-xen \
 echo CONFIG_GOLANG=n >> xen/.config
 echo CONFIG_GOLANG=n > tools/.config
 
-make install-tools \
+make -j$(($(nproc)+1)) install-tools \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \
@@ -222,7 +222,7 @@ if [ "$BUILD_STUBDOM" = "yes" ]; then
     DESTDIR=$PKG
 fi
 
-make install-docs \
+make -j$(($(nproc)+1)) install-docs \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \

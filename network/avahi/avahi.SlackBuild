@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for avahi
 
 # Copyright 2008-2012  David Somero (dsomero@hotmail.com) Athens, TN, USA
@@ -96,7 +96,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -170,7 +170,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   $MONO
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 # 20220414 bkw: if this dir is empty, it doesn't need to be included

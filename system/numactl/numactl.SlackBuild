@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for numactl
 
 # Written by Wainamoinen <wainamoinen@gmail.com>
@@ -52,7 +52,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -73,7 +73,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-static=no \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

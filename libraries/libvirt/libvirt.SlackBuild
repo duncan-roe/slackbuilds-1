@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libvirt
 # Written by Michal Bialozor <bialyy@o2.pl>
 # Maintained by Robby Workman <rworkman@slackbuilds.org>
@@ -59,7 +59,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
