@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for usbredir
 # Copyright 2013-2021 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy
 # All rights reserved.
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z*
+tar xf $CWD/$PRGNAM-$VERSION.tar.?z*
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \

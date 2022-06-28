@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for osinfo-db
 
 # Copyright 2016-2021 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy

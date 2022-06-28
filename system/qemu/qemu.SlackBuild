@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for qemu
 
 # Copyright 2009, 2010  Andrew Brouwers <abrouwers@gmail.com>
@@ -88,7 +88,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVER
-tar xvf $CWD/$PRGNAM-$SRCVER.tar.xz
+tar xf $CWD/$PRGNAM-$SRCVER.tar.xz
 cd $PRGNAM-$SRCVER
 chown -R root:root .
 find -L . \
@@ -136,7 +136,7 @@ CXXFLAGS="$SLKCFLAGS" \
   $with_vnc \
   $targets
 
-make V=1
+make -j$(($(nproc)+1) V=1
 make install DESTDIR=$PKG
 
 # Remove empty /var
