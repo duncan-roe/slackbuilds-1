@@ -136,7 +136,7 @@ CXXFLAGS="$SLKCFLAGS" \
   $with_vnc \
   $targets
 
-make -j$(($(nproc)+1) V=1
+make -j$(($(nproc)+1)) V=1
 make install DESTDIR=$PKG
 
 # Remove empty /var
