@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for x265
 
 # Copyright 2014-2020 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf ${PRGNAM}_${VERSION}
-tar xvf $CWD/${PRGNAM}_${VERSION}.tar.gz
+tar xf $CWD/${PRGNAM}_${VERSION}.tar.gz
 cd ${PRGNAM}_${VERSION}
 chown -R root:root .
 find -L . \
@@ -101,7 +101,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DENABLE_CLI=OFF \
     -DENABLE_SHARED=OFF \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make
+  make -j$(($(nproc)+1)) || make
 
   cd ../build-10
 
@@ -115,7 +115,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DENABLE_CLI=OFF \
     -DENABLE_SHARED=OFF \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make
+  make -j$(($(nproc)+1)) || make
 
   cd ../build-8
 
@@ -133,7 +133,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DLINKED_10BIT=ON \
     -DLINKED_12BIT=ON \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make
+  make -j$(($(nproc)+1)) || make
 
 else
 
@@ -146,7 +146,7 @@ else
     -DLIB_INSTALL_DIR=lib${LIBDIRSUFFIX} \
     -DENABLE_SHARED=ON \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make
+  make -j$(($(nproc)+1)) || make
 
 fi
 

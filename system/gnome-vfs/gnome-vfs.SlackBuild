@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # Slackware build script for gnome-vfs
 #
 # Copyright 2009-2011  Erik W. Hanson, Minneapolis, MN, USA
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -94,7 +94,7 @@ CFLAGS="$SLKCFLAGS" \
   --with-samba-includes=/usr/include/samba-4.0 \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

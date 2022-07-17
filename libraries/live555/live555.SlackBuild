@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for live555
 
 # Copyright 2014-2021 Christoph Willing, Brisbane, Australia
@@ -64,7 +64,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM
-tar xvf $CWD/$SRCNAM.$VERSION.tar.gz
+tar xf $CWD/$SRCNAM.$VERSION.tar.gz
 cd $SRCNAM
 chown -R root:root .
 find -L . \
@@ -82,7 +82,7 @@ for f in $(find . -type f |xargs grep -l "LIBDIR =") ; do echo $f; sed -i -e "/L
 
 ./genMakefiles linux-with-shared-libraries
 # Deal with intermittent parallel make failures
-make || make -j1
+make -j$(($(nproc)+1)) || make -j1
 make install DESTDIR=$PKG
 
 mkdir -p $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig

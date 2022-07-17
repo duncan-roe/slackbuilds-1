@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Copyright (c) 2007 Niki Kovacs <contact@kikinovak.net>
 # Copyright 2014 Ryan P.C. McQuen, WA, <ryanpcmcquen@member.fsf.org>
 #
@@ -85,7 +85,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$SRCVER
-tar xvf $CWD/$SRCNAM-$SRCVER.tar.gz || tar xvf $CWD/v$SRCVER.tar.gz
+tar xf $CWD/$SRCNAM-$SRCVER.tar.gz || tar xvf $CWD/v$SRCVER.tar.gz
 cd $SRCNAM-$SRCVER
 chown -R root:root .
 find -L . \
@@ -110,7 +110,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --host=$ARCH-slackware-linux \
   --target=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 gzip -9 $PKG/usr/man/man*/*
 

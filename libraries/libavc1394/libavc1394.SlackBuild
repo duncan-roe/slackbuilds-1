@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Pierre Cazenave revision date 11/11/2007
 #       Updated for Slackware64 28/05/2009
 # Modified by Robby Workman <rworkman@slackbuilds.org> for better
@@ -72,7 +72,7 @@ set -e
 rm -rf $TMP/$PRGNAM-$VERSION $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -91,7 +91,7 @@ CFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

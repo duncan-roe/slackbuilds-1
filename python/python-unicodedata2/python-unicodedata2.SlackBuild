@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for python-unicodedata2
 
 # Copyright 2017-2020,2022 Andrew Clemons, Wellington New Zealand
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \

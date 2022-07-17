@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libffado
 
 # Copyright 2010-2021 Heinz Wiesinger, Amsterdam, The Netherlands
@@ -72,7 +72,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tgz
+tar xf $CWD/$PRGNAM-$VERSION.tgz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -91,6 +91,15 @@ sed -i 's/ffado.org-ffadomixer.desktop/ffado-mixer.desktop/g' \
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS -std=gnu++11 -Wno-deprecated-declarations" \
+scons -j $(($(nproc+1))) \
+  PREFIX=/usr \
+  LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+  DIST_TARGET="$TARGET" \
+  PYTHON_INTERPRETER='/usr/bin/python3' \
+  PYPKGDIR="/usr/lib$LIBDIRSUFFIX/python${PYTHON_VERSION}/site-packages" \
+  CUSTOM_ENV="True" \
+  DEBUG="False" \
+  UDEVDIR='/lib/udev/rules.d' ||
 scons \
   PREFIX=/usr \
   LIBDIR=/usr/lib${LIBDIRSUFFIX} \
@@ -101,6 +110,10 @@ scons \
   DEBUG="False" \
   UDEVDIR='/lib/udev/rules.d'
 
+scons -j $(($(nproc+1))) \
+  DESTDIR=$PKG \
+  WILL_DEAL_WITH_XDG_MYSELF="True" \
+  install ||
 scons \
   DESTDIR=$PKG \
   WILL_DEAL_WITH_XDG_MYSELF="True" \

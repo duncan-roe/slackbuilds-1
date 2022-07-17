@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for LibreOffice Language Packs
 
 # Copyright 2010-2014 Niels Horn, Rio de Janeiro, RJ, Brazil
@@ -89,7 +89,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 rm -rf $TMP/$SOURCEDIR
 
-tar xvf $CWD/$TARBALL -C $TMP
+tar xf $CWD/$TARBALL -C $TMP
 
 cd $TMP/$SOURCEDIR/RPMS/
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libdvbpsi
 
 # Copyright 2006-2021  Robby Workman, Tuscaloosa, Alabama, USA
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf ${PRGNAM}-$VERSION
-tar xvf $CWD/${PRGNAM}-$VERSION.tar.bz2
+tar xf $CWD/${PRGNAM}-$VERSION.tar.bz2
 cd ${PRGNAM}-$VERSION
 chown -R root:root .
 find -L . \
@@ -90,7 +90,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

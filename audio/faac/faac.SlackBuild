@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for faac
 
 # Copyright (c) 2008, Antonio Hernández Blas <hba.nihilismus@gmail.com>
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVER
-tar xvf $CWD/$PRGNAM-$SRCVER.tar.gz
+tar xf $CWD/$PRGNAM-$SRCVER.tar.gz
 cd $PRGNAM-$SRCVER
 chown -R root:root .
 find -L . \
@@ -100,7 +100,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-static=no \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for jack (formerly jack2).
 
 # Copyright 2014 Yanes Checcacci Balod <email removed>, Brazil
@@ -85,7 +85,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \

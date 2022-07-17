@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for "libsidplay2".
 
 # Copyright 2011-2012 Dominik Drobek <dominik.drobek@o2.pl>
@@ -76,7 +76,7 @@ set -e
 rm -rf $TMP/$PRGNAM $TMP/debian $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-tar xvf $CWD/${SRCNAM}_$VERSION.orig.tar.gz
+tar xf $CWD/${SRCNAM}_$VERSION.orig.tar.gz
 tar xvf $CWD/${SRCNAM}_$VERSION-$DIFFVER.debian.tar.xz
 cd $TMP/$SRCNAM-$VERSION
 patch -p1 < $TMP/debian/patches/configure-fixes.patch
@@ -99,7 +99,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

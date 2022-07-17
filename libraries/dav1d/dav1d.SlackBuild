@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # ----------------------------------------------------------------------
 # Slackware build script for dav1d
 #
@@ -71,7 +72,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 rm -rf $TMP/$PRGNAM-$VERSION
 cd $TMP
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \

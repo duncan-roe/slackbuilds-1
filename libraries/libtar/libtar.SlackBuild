@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libtar
 
 # Ryan P.C. McQuen | Everett, WA | ryanpcmcquen@member.fsf.org
@@ -78,7 +78,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVERSION
-tar xvf $CWD/$PRGNAM-$SRCVERSION.tar.gz
+tar xf $CWD/$PRGNAM-$SRCVERSION.tar.gz
 cd $PRGNAM-$SRCVERSION
 chown -R root:root .
 find -L . \
@@ -99,7 +99,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

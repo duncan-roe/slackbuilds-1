@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for minizip
 
 # Copyright 2013 Daniil Bratashov <dn2010@gmail.com>
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/zlib-$VERSION.tar.xz
+tar xf $CWD/zlib-$VERSION.tar.xz
 cd zlib-$VERSION
 chown -R root:root .
 find -L . \
@@ -97,7 +97,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la

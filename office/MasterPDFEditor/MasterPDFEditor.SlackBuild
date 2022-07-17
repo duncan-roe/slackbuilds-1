@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for MasterPDFEditor
 
 # Copyright 2014-2022 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
@@ -67,7 +67,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT $PKG/opt
 cd $TMP
 rm -rf $SRCNAM-$MAJVER
-tar xvf $CWD/${SRCNAM}-${VERSION}${SOURCEARCH}.tar.gz
+tar xf $CWD/${SRCNAM}-${VERSION}${SOURCEARCH}.tar.gz
 cd $SRCNAM-$MAJVER
 chown -R root:root .
 find -L . \

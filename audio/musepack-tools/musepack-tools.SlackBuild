@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for musepack-tools
 # Written by Šime Ramov <s@ramov.com>
 
@@ -52,7 +52,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM\_$VERSION
-tar xzvf $CWD/$SRCNAM\_$VERSION.tar.gz
+tar xf $CWD/$SRCNAM\_$VERSION.tar.gz
 cd $SRCNAM\_$VERSION
 chown -R root:root .
 find -L . \
@@ -73,7 +73,7 @@ cd build
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX=$LIBDIRSUFFIX \
     -DCMAKE_BUILD_TYPE=Release ..
-  make -j1
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 cd ..
 

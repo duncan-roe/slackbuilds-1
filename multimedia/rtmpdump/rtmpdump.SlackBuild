@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for rtmpdump
 
 # Copyright 2013-2018 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy
@@ -72,7 +72,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z*
+tar xf $CWD/$PRGNAM-$VERSION.tar.?z*
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -90,12 +90,14 @@ sed -i \
   -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' \
   Makefile librtmp/Makefile
 
-XCFLAGS="$SLKCFLAGS" \
+export XCFLAGS="$SLKCFLAGS"
+make -j$(($(nproc)+1)) \
+  prefix=/usr \
+  libdir=/usr/lib$LIBDIRSUFFIX ||
 make \
   prefix=/usr \
   libdir=/usr/lib$LIBDIRSUFFIX
 
-XCFLAGS="$SLKCFLAGS" \
 make \
   prefix=/usr \
   libdir=/usr/lib$LIBDIRSUFFIX \

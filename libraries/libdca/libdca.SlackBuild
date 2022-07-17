@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libdca
 #
 # Copyright 2007  Niklas "Nille" Åkerström
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION libdts-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -98,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --enable-shared
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 cp -a libdca/dca_internal.h $PKG/usr/include
 rm -f $PKG/usr/lib*/lib*.a  # 20220418 bkw: broken symlink
