@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for tkdiff
 
 # Copyright 2017,2018 Duncan Roe, Melbourne, Australia
