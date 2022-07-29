@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware Package Build Script for ArgyllCMS
 # Home Page http://www.argyllcms.com/
 
