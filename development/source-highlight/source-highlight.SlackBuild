@@ -1,7 +1,7 @@
 #!/bin/bash
 # Slackware build script for source-highlight
 # Written by powtrix (@gmail.com)
-
+set -x
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=source-highlight
@@ -50,7 +50,7 @@ rm -rf $PKG
 mkdir -p $PKG $TMP
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xzfv $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -73,7 +73,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | \
