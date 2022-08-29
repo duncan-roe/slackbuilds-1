@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # Slackware build script for zoom-linux
 #
 # Copyright 2018-2021 Ebben Aries <slackbuilds@dscp.org>
@@ -73,7 +73,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$SRC.tar.xz
+tar xf $CWD/$SRC.tar.xz
 cd $SRCNAM
 chown -R root:root .
 find -L . \
