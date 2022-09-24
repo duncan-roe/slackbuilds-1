@@ -1,0 +1,11 @@
+xv has been a part of Slackware since at least Slackware1.2 (I have the
+Trans-Ameritech CD to prove it!). xv is missing from Slackware15.0 though,
+perhaps because it no longer builds. I got it to build again with a 1-line
+patch, so here it is.
+The version (3.10a) is not negotiable!
+The SB follows what Pat used to do: download 3.10 and patch to 3.10a.
+You *can* get a 3.10a tarball from the home page but the resulting directory is
+*different* from what you get by patching.
+(Specifically a couple of .ps files differ: gv can't display either version of
+either of them).
+With that in mind, I have played safe by fetching everything from Slackware14.2

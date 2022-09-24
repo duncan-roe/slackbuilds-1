@@ -1,0 +1,8 @@
+can't read "g(tooltip_id)": no such element in array
+can't read "g(tooltip_id)": no such element in array
+    while executing
+"after cancel $g(tooltip_id)"
+    (procedure "iTT_PopDown" line 4)
+    invoked from within
+"iTT_PopDown"
+    (command bound to event)
