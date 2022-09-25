@@ -8,4 +8,9 @@ You *can* get a 3.10a tarball from the home page but the resulting directory is
 *different* from what you get by patching.
 (Specifically a couple of .ps files differ: gv can't display either version of
 either of them).
-With that in mind, I have played safe by fetching everything from Slackware14.2
+With that in mind, I have played safe by fetching everything from Slackware14.2.
+I tried to buy an xv licence since the home page says they take credit cards,
+but got the message "This product is inactive and no longer for sale".
+Was going to put that in slack-desc but didn't.
+When choosing whether to keep a line the same as Pat's script or make it the
+same as autotools-template, I opted for Pat's script.

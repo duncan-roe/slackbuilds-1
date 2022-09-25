@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=xv
 VERSION=3.10a
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-1DR}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -76,18 +76,18 @@ rm -rf xv-3.10
 tar xf $CWD/xv-3.10.tar.xz
 cd xv-3.10
 chown -R root:root .
-zcat $CWD/xv-3.10a.patch.gz | patch -p0 --verbose --backup --suffix=.orig || exit 1
-bzcat $CWD/xv-3.10a-jumbo-fix-enh-patch-20070520.txt.bz2 | patch -p1 --verbose --backup --suffix=.orig || exit 1
-bzcat $CWD/xv-3.10a-jumbo-additions.diff.bz2 | patch -p1 --verbose --backup --suffix=.orig || exit 1
-bzcat $CWD/xv-3.10a-enhancements.20070520-20081216.diff.bz2 | patch -p1 --verbose --backup --suffix=.orig || exit 1
-zcat $CWD/xv.prefix.diff.gz | patch -p1 --verbose --backup --suffix=.orig || exit 1
+zcat $CWD/xv-3.10a.patch.gz | patch -p0 --verbose --backup --suffix=.orig
+bzcat $CWD/xv-3.10a-jumbo-fix-enh-patch-20070520.txt.bz2 | patch -p1 --verbose --backup --suffix=.orig
+bzcat $CWD/xv-3.10a-jumbo-additions.diff.bz2 | patch -p1 --verbose --backup --suffix=.orig
+bzcat $CWD/xv-3.10a-enhancements.20070520-20081216.diff.bz2 | patch -p1 --verbose --backup --suffix=.orig
+zcat $CWD/xv.prefix.diff.gz | patch -p1 --verbose --backup --suffix=.orig
 if [ "$ARCH" = "x86_64" ]; then
-  zcat $CWD/xv.prefix_x86_64.diff.gz | patch -p1 --verbose --backup --suffix=.orig || exit 1
+  zcat $CWD/xv.prefix_x86_64.diff.gz | patch -p1 --verbose --backup --suffix=.orig
 fi
-zcat $CWD/xv.jasper.diff.gz | patch -p1 --verbose --backup --suffix=.orig || exit 1
-zcat $CWD/xv-libpng-1.5.patch.gz | patch -p0 --verbose --backup --suffix=.orig || exit 1
-cat $CWD/gcc11.patch | patch -p1 --verbose --backup --suffix=.orig || exit 1
-make -j$(($(nproc)+1)) -f Makefile.std || make -f Makefile.std || exit 1
+zcat $CWD/xv.jasper.diff.gz | patch -p1 --verbose --backup --suffix=.orig
+zcat $CWD/xv-libpng-1.5.patch.gz | patch -p0 --verbose --backup --suffix=.orig
+cat $CWD/xv.gcc11.patch | patch -p1 --verbose --backup --suffix=.orig
+make -j$(($(nproc)+1)) -f Makefile.std || make -f Makefile.std
 strip --strip-unneeded bggen vdcomp xcmap xv xvpictoppm
 mkdir -p $PKG/usr/bin
 cat bggen > $PKG/usr/bin/bggen
@@ -114,5 +114,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/xv-$VERSION-$ARCH-$BUILD.txz
-
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

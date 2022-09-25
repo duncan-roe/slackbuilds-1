@@ -1,8 +1,24 @@
 PRGNAM="xv"
 VERSION="3.10a"
 HOMEPAGE="http://www.trilon.com/xv/"
-DOWNLOAD="direct download link(s) of application source tarball(s) arch-independent or x86"
-MD5SUM="md5sum(s) of the source tarball(s) defined in DOWNLOAD"
+DOWNLOAD="https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-3.10.tar.xz \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-3.10a.patch.gz \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-3.10a-jumbo-fix-enh-patch-20070520.txt.bz2 \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-3.10a-jumbo-additions.diff.bz2 \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-3.10a-enhancements.20070520-20081216.diff.bz2 \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv.prefix.diff.gz \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv.prefix_x86_64.diff.gz \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv.jasper.diff.gz \
+          https://mirrors.slackware.com/slackware/slackware-14.2/source/xap/xv/xv-libpng-1.5.patch.gz"
+MD5SUM="35a4945eba632278c4a201f2ae3ffdb9 \
+        0d2d4bf49a7757cbfcbacd556ce9c2fe \
+        e3ae35c0b4561753d461c47f2a0113e5 \
+        f55c9e674b00aeb93d3bcf7e4eaa1a90 \
+        3e499f81e8ee4500524e578acb1d3692 \
+        7ad9fc1582a778f4913653920c771661 \
+        0cff38a70882782fefe36ee29b344bda \
+        0be5833d2a245713344149d4ac0a9fcd \
+        3c5d08061cdc70ea20fdce9eae1eb364"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
 REQUIRES=""
