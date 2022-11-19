@@ -1,4 +1,4 @@
-PRGNAM="networkx"
+PRGNAM="python2-networkx"
 VERSION="2.2"
 HOMEPAGE="http://networkx.github.io/"
 DOWNLOAD="https://github.com/networkx/networkx/archive/refs/tags/networkx-2.2.tar.gz"

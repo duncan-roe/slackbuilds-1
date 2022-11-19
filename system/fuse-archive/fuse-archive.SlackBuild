@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for networkx
+# Slackware build script for fuse-archive
 
-# Copyright 2016 Fernando Lopez Jr. <fernando.lopezjr@gmail.com>
+# Copyright 2022 Charadon
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,21 +24,21 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=networkx
-VERSION=${VERSION:-2.2}
+PRGNAM=fuse-archive
+VERSION=${VERSION:-0.1.14}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
 if [ -z "$ARCH" ]; then
-  case "$( uname -m )" in
+case "$( uname -m )" in
     i?86) ARCH=i586 ;;
     arm*) ARCH=arm ;;
-       *) ARCH=$( uname -m ) ;;
-  esac
+    *) ARCH=$( uname -m ) ;;
+esac
 fi
 
-if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+if [ ! -z "${PRINT_PACKAGE_NAME}"  ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
 fi
@@ -68,7 +68,6 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-mv $PRGNAM-$PRGNAM-$VERSION $PRGNAM-$VERSION
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -77,22 +76,18 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-sed -i -e 's:share/doc:doc:' setup.py
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+make
+install -Dm755 out/fuse-archive $PKG/usr/bin/fuse-archive
 
-python setup.py install --root=$PKG
-
-# Python 3 support.
-if $(python3 -c 'import sys' 2>/dev/null); then
-  python3 setup.py install --root=$PKG
-fi
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a \
-  LICENSE.txt INSTALL.rst CONTRIBUTING.rst CONTRIBUTORS.rst README.rst RELEASE.rst \
-  $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS LICENSE $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install

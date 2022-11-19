@@ -5,15 +5,15 @@
 # You must make exactly 11 lines for the formatting to be correct.  It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-        |-----handy-ruler------------------------------------------------------|
-networkx: networkx (create, manipulate and study complex networks)
-networkx:
-networkx: NetworkX is a Python package for the creation, manipulation,
-networkx: and study of the structure, dynamics, and functions of complex
-networkx: networks.
-networkx:
-networkx:
-networkx:
-networkx:
-networkx:
-networkx:
+       |-----handy-ruler------------------------------------------------------|
+rst2pdf: rst2pdf (PDF from Text)
+rst2pdf:
+rst2pdf: This python module provides an alternative way to create
+rst2pdf: pdf from rst using the reportlab library.
+rst2pdf:
+rst2pdf:
+rst2pdf: Homepage:https://rst2pdf.org
+rst2pdf:
+rst2pdf:
+rst2pdf:
+rst2pdf:
