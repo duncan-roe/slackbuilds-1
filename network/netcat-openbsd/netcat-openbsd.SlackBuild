@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for netcat-openbsd
 #
 # Copyright 2020 Duncan Roe, Melbourne, Australia
@@ -80,7 +80,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVER
-tar xvf $CWD/$PRGNAM-$SRCVER.tar.gz
+tar xf $CWD/$PRGNAM-$SRCVER.tar.gz
 cd $PRGNAM-$SRCVER
 chown -R root:root .
 find -L . \
@@ -89,7 +89,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-make CFLAGS="$SLKCFLAGS -DNETCAT_VERSION=\"\\\"$VERSION\\\"\""
+make -j$(($(nproc)+1)) CFLAGS="$SLKCFLAGS -DNETCAT_VERSION=\"\\\"$VERSION\\\"\""
 
 mkdir -p $PKG/usr/bin/ $PKG/usr/man/man1/
 install -s -m 0755 nc $PKG/usr/bin/nc.openbsd
