@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                         |-----handy-ruler------------------------------------------------------|
-python-prometheus_client: python-prometheus_client (Prometheus instrumentation library)
-python-prometheus_client:
-python-prometheus_client: Prometheus is an open-source systems monitoring and alerting toolkit
-python-prometheus_client: originally built at SoundCloud. This is the Python client for
-python-prometheus_client: Prometheus.
-python-prometheus_client:
-python-prometheus_client:
-python-prometheus_client:
-python-prometheus_client:
-python-prometheus_client:
-python-prometheus_client:
+jupyter_server_terminals: jupyter_server_terminals (Jupyter Server Extension)
+jupyter_server_terminals:
+jupyter_server_terminals: Jupyter Server Terminals is a Jupyter Server Extension providing 
+jupyter_server_terminals: support for terminals.
+jupyter_server_terminals:
+jupyter_server_terminals:
+jupyter_server_terminals:
+jupyter_server_terminals:
+jupyter_server_terminals:
+jupyter_server_terminals:
+jupyter_server_terminals:

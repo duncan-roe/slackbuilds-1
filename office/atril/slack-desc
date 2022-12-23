@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
      |-----handy-ruler------------------------------------------------------|
-regex: regex (Python regex implementation)
-regex:
-regex: A new regex implementation intended eventually to replace Python's
-regex: current re module implementation. For testing and comparison with the
-regex: new implementation is in the form of a module called 'regex'.
-regex:
-regex: Homepage: https://code.google.com/p/mrab-regex-hg/
-regex:
-regex:
-regex:
-regex:
+atril: atril (a document viewer)
+atril:
+atril: atril is a document viewer capable of displaying multiple and single
+atril: page document formats like PDF, XPS, ePUB, DVI, and Postscript.
+atril:
+atril: Atril is a fork of Evince.
+atril:
+atril:
+atril:
+atril: https://www.mate-desktop.org
+atril:
