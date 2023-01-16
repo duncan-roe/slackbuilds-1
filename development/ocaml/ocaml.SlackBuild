@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for ocaml
 
 # Copyright 2007-2014 Ferenc Deak <ferenc.deak@gmail.com>
@@ -78,7 +78,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar -xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar -xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 fixperms
@@ -91,7 +91,7 @@ sed "s|@CFLAGS@|$SLKCFLAGS|" $CWD/configure.patch | patch -p1
   --mandir /usr/man \
   --disable-force-safe-string
 
-make world.opt
+make -j$(($(nproc)+1)) world.opt || make world.opt
 make DESTDIR=$PKG install
 gzip -9 $PKG/usr/man/man*/*
 
