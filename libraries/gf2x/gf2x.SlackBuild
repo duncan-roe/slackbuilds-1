@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gf2x
 
 # Copyright 2016-2019 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
@@ -72,7 +72,7 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 rm -rf $PRGNAM-$PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$PRGNAM-$VERSION.tar.gz
 mv $PRGNAM-$PRGNAM-$VERSION $PRGNAM-$VERSION
 cd $PRGNAM-$VERSION
 chown -R root:root .
@@ -98,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-static=no \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

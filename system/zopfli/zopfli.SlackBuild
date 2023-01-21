@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for Zopfli
 
 # Copyright 2015 Oleg A. Deordiev Ukraine
@@ -56,7 +56,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz || tar xvf $CWD/$PRGNAM-$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz || tar xvf $CWD/$PRGNAM-$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -65,7 +65,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-make
+make -j$(($(nproc)+1)) || make
 
 mkdir -p $PKG/usr/bin $PKG/usr/doc/$PRGNAM-$VERSION
 cp ./zopfli $PKG/usr/bin
