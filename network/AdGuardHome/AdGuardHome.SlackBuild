@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for AdGuardHome
 
 # Copyright 2019-2022, Alexander Verbovetsky, Moscow, Russia
@@ -60,7 +60,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM
-tar xvf $CWD/${PRGNAM}_$SUFFIX.tar.gz
+tar xf $CWD/${PRGNAM}_$SUFFIX.tar.gz
 cd $PRGNAM
 chown -R root:root .
 find -L . \

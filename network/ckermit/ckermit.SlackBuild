@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for ckermit
 
 # Written by Andrew Rowland (darowland@ieee.org)
@@ -61,7 +61,7 @@ if [ -z "$FILE" ]; then
     FILE=x.tar.gz
   fi
 fi
-tar xvf $CWD/$FILE -C $PRGNAM-$VERSION
+tar xf $CWD/$FILE -C $PRGNAM-$VERSION
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -73,6 +73,7 @@ find -L . \
 # Force the makefile to accept our custom cflags
 patch -p1 < $CWD/makefile-use-custom-cflags.diff
 
+make -j$(($(nproc)+1)) linux OPT="$SLKCFLAGS -D_IO_file_flags" ||
 make linux OPT="$SLKCFLAGS -D_IO_file_flags"
 
 mkdir -p $PKG/usr/bin

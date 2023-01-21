@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # Slackware build script for OpenBLAS
 # Written by Mário Antunes (mariolpantunes@gmail.com)
 
@@ -57,7 +57,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -66,6 +66,15 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+make -j$(($(nproc)+1)) $EXTRAPARMS \
+  DYNAMIC_ARCH=1 \
+  TARGET=GENERIC \
+  NO_STATIC=1 \
+  NO_AFFINITY=1 \
+  BUILD_RELAPACK=1 \
+  DESTDIR=$PKG \
+  PREFIX=$PREFIX \
+  OPENBLAS_LIBRARY_DIR=$PREFIX/lib$LIBDIRSUFFIX ||
 make $EXTRAPARMS \
   DYNAMIC_ARCH=1 \
   TARGET=GENERIC \
