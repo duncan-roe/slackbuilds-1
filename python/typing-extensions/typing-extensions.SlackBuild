@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # SlackBuild build script for typing-extensions
 
 # Copyright (c) 2000-2020 Prof. Horstmann <wmh (at) eipg.fr>
@@ -60,7 +60,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \

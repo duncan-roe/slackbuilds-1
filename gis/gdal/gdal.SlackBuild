@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for GDAL
 
 # Copyright 2009 Marco Cecchetti <mrc.ild@gmail.com>
@@ -78,7 +78,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z*
+tar xf $CWD/$PRGNAM-$VERSION.tar.?z*
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -121,7 +121,7 @@ mkdir build
     $TESTBUILDFLAGS \
     -DCMAKE_BUILD_TYPE=Release \
     ..
-  make
+  make -j$(($(nproc)+1)) || make
   [[ $TESTBUILD == "YES" ]] && make test
   make install/strip DESTDIR=$PKG
 )

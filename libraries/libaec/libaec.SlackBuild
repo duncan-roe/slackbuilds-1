@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libaec
 
 # Copyright 2020-2021 Gregory J. L. Tourte <artourter@gmail.com>
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 
 cd $PRGNAM-$VERSION
 
@@ -90,7 +90,7 @@ mkdir -p build
     -DCMAKE_INSTALL_MANDIR=/usr/man \
     -DCMAKE_BUILD_TYPE=Release \
     ..
-  make
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 )
 

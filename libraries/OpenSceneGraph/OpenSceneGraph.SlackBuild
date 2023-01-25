@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for OpenSceneGraph
 
 # Written by Aleksandar Samardzic <asamardzic@gmail.com>
@@ -90,7 +90,7 @@ cd build
     $occ \
     -DBUILD_OSG_EXAMPLES=ON \
 
-  make
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 
   # No binaries in /usr/share. Move examples to /usr/bin

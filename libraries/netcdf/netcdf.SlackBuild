@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # SlackBuild script for netcdf.
 #
 # Copyright 2022 Gregory J. L. Tourte <artourter@gmail.com>
@@ -78,7 +78,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -111,7 +111,7 @@ CXXFLAGS="$SLKCFLAGS" \
    ${hdf4opt} \
    --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 [[ $TESTBUILD == "YES" ]] && make check
 make install DESTDIR=$PKG
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libdbi-drivers
 # Written by Michal Bialozor <bialyy@o2.pl>
 # Modified by  Vincent Batts, vbatts@hashbangbash.com, http://hashbangbash.com/
@@ -62,7 +62,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVERSION
-tar xvf $CWD/$PRGNAM-$SRCVERSION.tar.gz
+tar xf $CWD/$PRGNAM-$SRCVERSION.tar.gz
 cd $PRGNAM-$SRCVERSION
 chown -R root:root .
 find -L . \
@@ -87,6 +87,7 @@ CFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   $OPT_ARGS
 
+make -j$(($(nproc)+1)) docdir=/usr/doc/$PRGNAM-$VERSION ||
 make docdir=/usr/doc/$PRGNAM-$VERSION
 make docdir=/usr/doc/$PRGNAM-$VERSION install-strip DESTDIR=$PKG
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for hwloc
 
 # Written by Wainamoinen <wainamoinen@gmail.com>
@@ -74,7 +74,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-debug \
   --enable-netloc
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 rm -f $PKG/usr/lib*/*.la
 
