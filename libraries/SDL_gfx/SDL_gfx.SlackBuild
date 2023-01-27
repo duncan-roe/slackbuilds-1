@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for: SDL_gfx
 
 # Ryan P.C. McQuen | Everett, WA | ryanpcmcquen@member.fsf.org
@@ -100,7 +100,7 @@ sh ./configure \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 rm -f $PKG/usr/lib*/*.la

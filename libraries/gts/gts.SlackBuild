@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for GNU Triangulation Library
 
 # Adapted by Dan LaRocque <dalaro@hopcount.org>
@@ -53,7 +53,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -75,7 +75,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-shared \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

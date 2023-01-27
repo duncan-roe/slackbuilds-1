@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # Slackware build script for swfdec
 #
 # Copyright 2009-2017  Erik W. Hanson, Minneapolis, MN, USA
@@ -64,7 +64,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -83,7 +83,7 @@ CFLAGS="$SLKCFLAGS" \
   --disable-gtk-doc \
   --libdir=/usr/lib${LIBDIRSUFFIX}
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 rm -f $PKG/usr/lib*/*.la

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for TiMidity++
 
 # Copyright 2010-2018 Kyle Guinn <elyk03@gmail.com>
@@ -92,7 +92,7 @@ TARBALL=$CWD/$PRGNAM-$VERSION.tar.xz
 if [ ! -e $TARBALL ]; then
   TARBALL=$CWD/TiMidity%2B%2B-$VERSION.tar.xz
 fi
-tar xvf $TARBALL
+tar xf $TARBALL
 cd $PRGNAM-$VERSION
 chown -R root:root .
 chmod -R u+w,go-w,a+rX-st .
@@ -138,7 +138,7 @@ EXTRACFLAGS="$SLKCFLAGS" \
   --with-xaw-resource-prefix=/etc/X11 \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 find $PKG/usr/man -type f -exec gzip -9 {} +

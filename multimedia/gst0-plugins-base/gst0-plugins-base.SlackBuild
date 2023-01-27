@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gst0-plugins-base
 
 # Copyright 2008 Michiel van Wessem <michiel@slackbuilds.org>
@@ -75,7 +75,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+tar xf $CWD/$SRCNAM-$VERSION.tar.xz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -103,7 +103,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 make install DESTDIR=$PKG
 

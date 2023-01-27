@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for raptor
 
 # Copyright 2012-2020 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf ${PRGNAM}2-$VERSION
-tar xvf $CWD/${PRGNAM}2-$VERSION.tar.gz
+tar xf $CWD/${PRGNAM}2-$VERSION.tar.gz
 cd ${PRGNAM}2-$VERSION
 chown -R root:root .
 find -L . \
@@ -95,7 +95,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-icu-config=/usr/bin/icu-config \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

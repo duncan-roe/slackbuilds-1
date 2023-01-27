@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for ladspa_sdk
 
 # Copyright 2007-2021 Heinz Wiesinger, Amsterdam, The Netherlands
@@ -73,7 +73,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf ${PRGNAM}_${VERSION}
-tar xvf $CWD/${PRGNAM}_${VERSION}.tgz
+tar xf $CWD/${PRGNAM}_${VERSION}.tgz
 cd ${PRGNAM}_${VERSION}
 chown -R root:root .
 find -L . \
@@ -83,6 +83,10 @@ find -L . \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 cd src
+  make -j$(($(nproc)+1)) \
+    CFLAGS="$SLKCFLAGS -I. -Wall -Werror -fPIC" \
+    INSTALL_PLUGINS_DIR="/usr/lib${LIBDIRSUFFIX}/ladspa" \
+    INSTALL_BINARY_DIR="/usr/bin" ||
   make \
     CFLAGS="$SLKCFLAGS -I. -Wall -Werror -fPIC" \
     INSTALL_PLUGINS_DIR="/usr/lib${LIBDIRSUFFIX}/ladspa" \

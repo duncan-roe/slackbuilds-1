@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gst-plugins-bad-nonfree
 
 # Copyright 2013-2021  Robby Workman, Tuscaloosa, Alabama, USA
@@ -83,7 +83,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+tar xf $CWD/$SRCNAM-$VERSION.tar.xz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \

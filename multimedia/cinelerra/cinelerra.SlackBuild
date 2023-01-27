@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for cinelerra
 
 # Copyright 2015 by Danny Schmarsel <danny@schmarsel.de>
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-gg-$VERSION
-tar xvf $CWD/$PRGNAM-gg-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-gg-$VERSION.tar.xz
 cd $PRGNAM-gg-$VERSION/cinelerra-5.1
 chown -R root:root .
 find -L . \
@@ -98,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   $mmx
 
-make
+make -j$(($(nproc)+1)) || make
 make -j1 install DESTDIR=$PKG
 
 rm -f $PKG/usr/share/applications/cin.desktop

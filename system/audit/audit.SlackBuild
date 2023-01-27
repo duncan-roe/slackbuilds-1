@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Copyright 2010,  R. Andrew Bailey, Chantilly, VA  USA
 #    2013 - 2014,  Bogdan Radulescu, Bucharest, Romania <bogdan@nimblex.net>
 # All rights reserved.
@@ -67,7 +67,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -96,7 +96,7 @@ CFLAGS="$SLKCFLAGS" \
   --enable-gssapi-krb5=yes \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make DESTDIR=$PKG install-strip
 gzip -9 $PKG/usr/man/man*/*
 

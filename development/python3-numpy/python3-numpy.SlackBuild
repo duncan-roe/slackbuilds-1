@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for numpy3
 
 # Copyright 2015-2022 Christoph Willing  Brisbane, Australia
