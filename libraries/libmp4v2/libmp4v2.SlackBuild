@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libmp4v2
 
 # Copyright (c) 2007  Alex Lysenka <me@alkos333.net>
@@ -82,7 +82,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z*
+tar xf $CWD/$PRGNAM-$VERSION.tar.?z*
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -106,7 +106,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

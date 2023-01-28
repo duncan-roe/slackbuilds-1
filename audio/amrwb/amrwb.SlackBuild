@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for amrwb
 
 # Copyright 2007-2014 Heinz Wiesinger, Amsterdam, The Netherlands
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 cp $CWD/26204-b00.zip .
 chown -R root:root .
@@ -92,7 +92,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   --host=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install-strip DESTDIR=$PKG
 
 # Don't ship .la/.a files:
