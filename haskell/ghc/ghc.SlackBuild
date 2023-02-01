@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for ghc
 
 # Copyright 2015 Mikko Värri, Finland
@@ -79,7 +79,7 @@ if [ "${BOOTSTRAP:-yes}" = "yes" ] ; then
 
   cd $TMP
   rm -rf $PRGNAM-$VERSION
-  tar xvf $CWD/$PRGNAM-$VERSION-$TARARCH-deb9-linux.tar.xz
+  tar xf $CWD/$PRGNAM-$VERSION-$TARARCH-deb9-linux.tar.xz
   cd $PRGNAM-$VERSION
   chown -R root:root .
   find -L . \
@@ -106,7 +106,7 @@ if [ "${BOOTSTRAP:-yes}" = "yes" ] ; then
   mkdir -p $LIBTINFO_DIR
   ln -s /lib$LIBDIRSUFFIX/libncurses.so.5 $LIBTINFO_DIR/libtinfo.so.5
   LD_LIBRARY_PATH=$LIBTINFO_DIR \
-  make -j1 install
+  make -j$(($(nproc)+1)) install || make -j1 install
   sed -i -r -e "s|^exec |LD_LIBRARY_PATH=$LIBTINFO_DIR exec |" $BOOTSTRAPDIR/usr/bin/ghc{,-pkg}-$VERSION
 
   BOOTSTRAPGHC=$BOOTSTRAPDIR/usr/bin/ghc

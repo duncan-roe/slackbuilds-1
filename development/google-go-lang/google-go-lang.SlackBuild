@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for google-go-lang
 
 # Written by Eric Schultz eric at schultzter.ca
@@ -78,7 +78,7 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG/usr/lib${LIBDIRSUFFIX}/go${VERSION} $OUTPUT
 cd $PKG/usr/lib${LIBDIRSUFFIX}/go${VERSION}
-tar xvf $CWD/go${VERSION}.src.tar.gz
+tar xf $CWD/go${VERSION}.src.tar.gz
 cd go
 chown -R root:root .
 find -L . \

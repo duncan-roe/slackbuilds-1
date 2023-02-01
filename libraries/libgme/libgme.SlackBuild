@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libgme
 
 # Copyright 2015-2018 pomfland
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $_PRGNAM-$VERSION
-tar xvf $CWD/$_PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$_PRGNAM-$VERSION.tar.xz
 cd $_PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -88,7 +88,7 @@ cd build
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX=${LIBDIRSUFFIX} \
     -DCMAKE_BUILD_TYPE=Release ..
-  make
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 cd ..
 

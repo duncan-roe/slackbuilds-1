@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for upx
 
 # Copyright 2018  KotCzarny <tjosko@yahoo.com>
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION-src
-tar xvf $CWD/$PRGNAM-$VERSION-src.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION-src.tar.xz
 cd $PRGNAM-$VERSION-src
 chown -R root:root .
 find -L . \
@@ -85,7 +85,7 @@ patch -p1 < "$CWD/upx-0001-fix-check_whitespace.patch"
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 CXXFLAGS_WERROR="" \
-make all
+make -j$(($(nproc)+1)) all || make all
 install -D src/upx.out $PKG/usr/bin/upx
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

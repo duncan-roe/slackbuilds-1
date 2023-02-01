@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for fluid-soundfont
 # This is basically a combined repack of Debian's fluid-soundfont-gm
 # and fluid-soundfont-gs packages, plus a wrapper script for fluidsynth.
@@ -36,7 +36,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$TARVER
-tar xvf $CWD/${PRGNAM}_$TARVER.orig.tar.gz
+tar xf $CWD/${PRGNAM}_$TARVER.orig.tar.gz
 cd $PRGNAM-$TARVER
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \

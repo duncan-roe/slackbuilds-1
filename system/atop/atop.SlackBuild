@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for atop
 
 # Written by Menno Duursma <druiloor@zonnet.nl>
@@ -56,7 +56,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -65,7 +65,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-make CFLAGS="$SLKCFLAGS"
+make -j$(($(nproc)+1)) CFLAGS="$SLKCFLAGS" || make CFLAGS="$SLKCFLAGS"
 
 # Install the binary sgid utmp in order to allow accounting
 install -D -o root -g utmp -m 2751 atop $PKG/usr/bin/atop

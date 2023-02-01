@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for DjView4
 
 # Copyright 2008-2010 Murat D. Kadirov <banderols@gmail.com>
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/djview-$VERSION.tar.gz
+tar xf $CWD/djview-$VERSION.tar.gz
 mv djview-$VERSION djview4-$VERSION
 cd $PRGNAM-$VERSION
 chown -R root:root .
@@ -99,7 +99,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 mkdir -p $PKG/usr/share/pixmaps

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gnulib
 
 # Written by B. Watson (urchlay@slackware.uk)
@@ -62,7 +62,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-${VERSION/+/-}-stable
-tar xvf $CWD/${PRGNAM}_$VERSION+stable.orig.tar.gz
+tar xf $CWD/${PRGNAM}_$VERSION+stable.orig.tar.gz
 cd $PRGNAM-${VERSION/+/-}-stable
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \
@@ -73,8 +73,8 @@ find . \( -name '.git*' -o -name '.cvs*' \) -print0 | xargs -0 rm -rf
 # does the same as Debian's 02-shebang.patch
 sed -i '1s,#!/usr/local/bin,#!/usr/bin,' lib/uniname/gen-uninames.lisp
 
-make -C doc info
-make -C doc html
+make -j$(($(nproc)+1)) -C doc info || make -C doc info
+make -j$(($(nproc)+1)) -C doc html || make -C doc html
 
 # Debian does this, is it really necessary?
 chmod 755 tests/*.in.sh lib/config.charset

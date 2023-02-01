@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for wine
 
 # Copyright 2011 David Woodfall
@@ -97,7 +97,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -132,8 +132,8 @@ if [ "${WINE64:-NO}" = "YES" ]; then
      --disable-tests \
      --build=$BUILD_ARCH
 
-  make depend
-  make
+  make -j$(($(nproc)+1)) depend || make depend
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
   cd ..
 fi
@@ -161,8 +161,8 @@ if [ "${WINE32:-NO}" = "YES" ]; then
      --disable-tests \
      --build=$BUILD_ARCH
 
-  make depend
-  make
+  make -j$(($(nproc)+1)) depend || make depend
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
   cd ..
 fi

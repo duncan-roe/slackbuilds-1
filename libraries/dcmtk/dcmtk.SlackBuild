@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for dcmtk
 
 # Copyright 2018-2022 Christoph Willing,  Brisbane Australia
@@ -72,7 +72,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -94,7 +94,7 @@ cd build
     -DBUILD_SHARED_LIBS=ON \
     -DDCMTK_ENABLE_CXX11=ON \
     -DCMAKE_BUILD_TYPE=Release ..
-  make
+  make -j$(($(nproc)+1)) || make
   make install/strip DESTDIR=$PKG
 cd ..
 

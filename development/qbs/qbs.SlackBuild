@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for Qbs
 
 # Copyright 2014-2017 Nikos Giotis <nikos.giotis@mail.com>
@@ -79,7 +79,7 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-src-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-src-$VERSION.tar.gz
 mv $PRGNAM-src-$VERSION $PRGNAM-$VERSION
 cd $PRGNAM-$VERSION
 
@@ -100,7 +100,7 @@ qmake-qt5 qbs.pro                         \
   QBS_LIBRARY_DIRNAME=lib$LIBDIRSUFFIX    \
   CONFIG+=qbs_enable_project_file_updates
 
-make
+make -j$(($(nproc)+1)) || make
 make install INSTALL_ROOT=$PKG
 
 if which qdoc-qt5 &>/dev/null; then

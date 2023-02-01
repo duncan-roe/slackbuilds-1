@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for Qt Creator
 
 # Copyright 2016 Andre Barboza, Belo Horizonte - Brazil
@@ -76,7 +76,7 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 
 rm -rf $PRGNAM-$SRCVER
-tar xvf $CWD/$PRGNAM-opensource-src-$SRCVER.tar.gz
+tar xf $CWD/$PRGNAM-opensource-src-$SRCVER.tar.gz
 #mv $PRGNAM-opensource-src-$SRCVER $PRGNAM-$SRCVER
 cd $PRGNAM-$SRCVER
 
@@ -125,7 +125,7 @@ qmake-qt5 -r qtcreator.pro                 \
   QBS_INSTALL_DIR=/usr                     \
   DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES
 
-make
+make -j$(($(nproc)+1)) || make
 make install INSTALL_ROOT=$PKG
 
 if which qdoc-qt5 &>/dev/null; then
