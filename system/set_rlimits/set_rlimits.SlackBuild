@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for set_rlimits 1.2.0
 # Slackbuild script by paul wisehart wise@lupulin.net
 
@@ -53,7 +53,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tgz
+tar xf $CWD/$PRGNAM-$VERSION.tgz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -66,6 +66,7 @@ find -L . \
 patch -p1 < $CWD/Makefile.patch
 
 make clean # oops :-)
+make -j$(($(nproc)+1)) EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr ||
 make EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr
 make install PREFIX=/usr DESTDIR=$PKG
 

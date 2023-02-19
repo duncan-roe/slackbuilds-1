@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for nodejs
 # Thanks to Audrius Kažukauskas
 
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-v$VERSION
-tar xvf $CWD/$SRCNAM-v$VERSION.tar.xz
+tar xf $CWD/$SRCNAM-v$VERSION.tar.xz
 cd $SRCNAM-v$VERSION
 chown -R root:root .
 find -L . \
@@ -95,6 +95,7 @@ sed -i "s|math.h|cmath|" src/node_crypto.cc
   --shared-zlib \
   --ninja
 
+make -j$(($(nproc)+1)) CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCFLAGS" ||
 make CFLAGS="$SLKCFLAGS" CXXFLAGS="$SLKCFLAGS"
 make install DESTDIR=$PKG
 

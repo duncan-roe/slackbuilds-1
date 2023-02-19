@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for vsxu
 
 # Copyright 2014-2018 Christoph Willing, Brisbane, Australia
@@ -94,7 +94,7 @@ cd build
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX=${LIBDIRSUFFIX} \
     -DCMAKE_BUILD_TYPE=Release ..
-  make
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 cd ..
 

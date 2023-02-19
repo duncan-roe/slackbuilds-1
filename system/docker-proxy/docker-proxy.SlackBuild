@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for docker-proxy
 
 # Copyright 2017-2021 Audrius Kažukauskas <audrius@neutrino.lt>
@@ -58,7 +58,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$GITHASH
-tar xvf $CWD/$SRCNAM-$GITHASH.tar.gz
+tar xf $CWD/$SRCNAM-$GITHASH.tar.gz
 cd $SRCNAM-$GITHASH
 chown -R root:root .
 find -L . \

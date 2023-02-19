@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # Slackware build script for shotcut.
 #
 # Copyright 2015 Edinaldo P. Silva, Rio de Janeiro, Brazil.
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -97,7 +97,7 @@ mkdir -p build
 cd build
 qmake PREFIX="/usr" QMAKE_CFLAGS+="$SLKCFLAGS" QMAKE_CXXFLAGS+="$SLKCFLAGS" \
   CONFIG+=release SHOTCUT_VERSION="$VERSION" DEFINES+=SHOTCUT_NOUPGRADE ..
-make
+make -j$(($(nproc)+1)) || make
 lrelease ../translations/*.ts
 make install INSTALL_ROOT=$PKG
 cd ..

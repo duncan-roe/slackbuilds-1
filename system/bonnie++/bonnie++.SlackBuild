@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for bonnie++
 # Written by Vincent Batts <vbatts@hashbangbash.com>
 # Modified by Michiel van Wessem <michiel@slackbuils.org>
@@ -52,7 +52,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/${PRGNAM}_${VERSION}.tgz
+tar xf $CWD/${PRGNAM}_${VERSION}.tgz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -73,7 +73,7 @@ patch -p1 < $CWD/Makefile.in_DESTDIR.diff
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION
 
-make MORECFLAGS="$SLKCFLAGS"
+make -j$(($(nproc)+1)) MORECFLAGS="$SLKCFLAGS" || make MORECFLAGS="$SLKCFLAGS"
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \

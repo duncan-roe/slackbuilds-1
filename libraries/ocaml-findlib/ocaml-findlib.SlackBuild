@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Copyright 2011 - 2014  Jockey S. Kyd, Shanghai, CHN
 # Copyright 2014 Markus Hutmacher <mailing@markhu.de>
 # Copyright 2016-2022 Matteo Bernardini <ponce@slackbuilds.org>
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -87,7 +87,9 @@ CXXFLAGS="$SLKCFLAGS" \
   -mandir  /usr/man \
   -sitelib /usr/lib$LIBDIRSUFFIX/ocaml/site-lib \
   -config  /etc/findlib.conf
+make -j$(($(nproc)+1)) all ||
 make -j1 all
+make -j$(($(nproc)+1)) opt ||
 make -j1 opt
 make -j1 install prefix=$PKG
 

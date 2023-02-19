@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for jitsi-meet-desktop
 
 # Copyright 2022-2023 Isaac Yu <isaacyu1@isaacyu1.com>

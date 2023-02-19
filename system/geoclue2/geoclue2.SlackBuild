@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for geoclue2
 # Copyright 2017-2022 Aaditya <aaditya_gnulinux@zoho.com>
 # All rights reserved.
@@ -68,7 +68,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.bz2
+tar xf $CWD/$SRCNAM-$VERSION.tar.bz2
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \

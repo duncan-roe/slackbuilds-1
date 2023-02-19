@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for tini
 
 # Copyright 2017-2021 Audrius Kažukauskas <audrius@neutrino.lt>
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -92,7 +92,7 @@ cd build
     -DPR_SET_CHILD_SUBREAPER=36 \
     -DPR_GET_CHILD_SUBREAPER=37 \
     -DCMAKE_BUILD_TYPE=Release ..
-  make
+  make -j$(($(nproc)+1)) || make
   make install DESTDIR=$PKG
 cd ..
 

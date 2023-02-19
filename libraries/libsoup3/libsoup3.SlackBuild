@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libsoup3
 
 # Copyright 2022 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.bz2
+tar xf $CWD/$SRCNAM-$VERSION.tar.bz2
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
