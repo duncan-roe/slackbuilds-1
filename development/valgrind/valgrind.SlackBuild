@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for valgrind
 # Written by Kyle Guinn <elyk03@gmail.com>
 # Updated by Peter Wang <novalazy@gmail.com>
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -94,7 +94,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 # Do NOT strip the shared objects, as recommended by the developers.

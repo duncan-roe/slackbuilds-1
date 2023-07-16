@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for rustup
 
 # Copyright 2017-2021 Andrew Clemons, Wellington New Zealand
@@ -78,7 +78,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 
 # build offline

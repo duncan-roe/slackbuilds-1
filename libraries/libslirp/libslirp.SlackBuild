@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libslirp
 
 # Copyright 2022-2023  Vijay Marcel
@@ -69,7 +69,7 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 rm -rf $PKG
-tar xvf $CWD/$PRGNAM-v$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-v$VERSION.tar.gz
 cd $PRGNAM-v$VERSION
 
 chown -R root:root .

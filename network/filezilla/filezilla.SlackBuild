@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # Slackware build script for filezilla
 
 # Copyright 2007-2009 Grigorios Bouzakis <grbzks@xsmail.com>
@@ -74,7 +75,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/FileZilla_${VERSION}_src.tar.xz
+tar xf $CWD/FileZilla_${VERSION}_src.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -100,7 +101,7 @@ patch -p1 < $CWD/interface_Mainfrm_h_include_list.patch
   $pugixml \
   --build=$ARCH-slackware-linux
 
-make
+make -j$(($(nproc)+1)) || make
 make install DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la
