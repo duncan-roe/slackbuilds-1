@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-pathlib2: pathlib2 (Object-oriented filesystem paths)
-pathlib2:
-pathlib2: The old pathlib module on bitbucket is in bugfix-only mode. The goal
-pathlib2: of pathlib2 is to provide a backport of standard pathlib module which
-pathlib2: tracks the standard library module, so all the newest features of the
-pathlib2: standard pathlib can be used also on older Python versions.
-pathlib2:
-pathlib2: Homepage: https://pypi.org/project/pathlib2/
-pathlib2:
-pathlib2:
-pathlib2:
+onefetch: onefetch (command line Git information tool)
+onefetch:
+onefetch: onefetch is a command line Git information tool that displays project
+onefetch: information and code statistics for a local Git repository. No network
+onefetch: access is required to use onefetch.
+onefetch:
+onefetch:
+onefetch:
+onefetch:
+onefetch: Author: Ossama Hjaji
+onefetch: Homepage: htps://github.com/o2sh/onefetch
