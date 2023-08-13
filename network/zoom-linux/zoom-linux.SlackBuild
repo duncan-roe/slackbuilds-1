@@ -72,7 +72,7 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $PKG
-tar xvf $CWD/$SRC.pkg.tar.xz
+tar xf $CWD/$SRC.pkg.tar.xz
 # don't want these
 rm -vrf .INSTALL .MTREE .PKGINFO
 rm -rf usr/bin/zoom usr/share/doc
