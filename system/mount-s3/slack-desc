@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-httplib2: httplib2 (python http library)
-httplib2:
-httplib2: A comprehensive HTTP client library that supports many features
-httplib2: left out of other HTTP libraries.
-httplib2:
-httplib2: homepage: https://github.com/httplib2/httplib2/
-httplib2:
-httplib2:
-httplib2:
-httplib2:
-httplib2:
+mount-s3: mount-s3 (Amazon S3 bucket)
+mount-s3:
+mount-s3: Mountpoint for Amazon S3 is a simple, high-throughput file client
+mount-s3: for mounting an Amazon S3 bucket as a local file system.
+mount-s3:
+mount-s3:
+mount-s3:
+mount-s3: Project: https://github.com/awslabs/mountpoint-s3/
+mount-s3:
+mount-s3:
+mount-s3:
