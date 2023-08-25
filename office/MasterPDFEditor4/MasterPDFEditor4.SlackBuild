@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for <MasterPDFEditor4>
 
 # Copyright 2023 Petar Petrov slackalaxy at gmail dot com
@@ -60,7 +60,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-${VERSION%.*.*}
-tar xvf $CWD/$SRCNAM-${VERSION}_qt5.amd64.tar.gz
+tar xf $CWD/$SRCNAM-${VERSION}_qt5.amd64.tar.gz
 cd $SRCNAM-${VERSION%.*.*}
 chown -R root:root .
 find -L . \
