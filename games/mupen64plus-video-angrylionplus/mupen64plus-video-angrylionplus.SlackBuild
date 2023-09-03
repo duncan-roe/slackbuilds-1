@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# SlackBuild build script for click-repl
+# Slackware build script for mupen64plus-video-angrylionplus
 
-# Copyright (c) 2000-2011 Pr. Horstmann <wmh (at) eipg.fr>
+# Copyright 2023 Steven Voges <Oregon, USA>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,14 +24,15 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=click-repl
-SRCPKG=${SRCPKG-click-repl}
-VERSION=${VERSION:-0.1.6}
+PRGNAM=mupen64plus-video-angrylionplus
+SRCNAM=angrylion-rdp-plus
+VERSION=${VERSION:-20230815_20eaeaf}
+DATE=${DATE:-2023-08-15}
+SRCVER=${SRCVER:-20eaeaffc83ee7a4ca64a533a65f906b82d10dc4}
+COMMIT=$(echo $SRCVER | cut -c -7)
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
-
-SRCNAM="$(printf $SRCPKG | cut -d- -f1-)"
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -50,35 +51,66 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=i686 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
 set -e
 
 rm -rf $PKG
-mkdir -p $TMP $PKG
+mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.?z*
-cd $SRCNAM-$VERSION
+rm -rf $SRCNAM-$SRCVER
+tar xvf $CWD/$SRCNAM-$SRCVER.tar.gz
+cd $SRCNAM-$SRCVER
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Python 2.7 will be dropped in the future.
-python2 setup.py install --root=$PKG
+sed -i "s/BRANCH \"unknown\"/BRANCH \"master\"/g" git-version.cmake
+sed -i "s/COMMIT_DATE \"unknown\"/COMMIT_DATE \"$DATE\"/g" git-version.cmake
+sed -i "s/COMMIT_HASH \"unknown\"/COMMIT_HASH \"$COMMIT\"/g" git-version.cmake
+sed -i "s/TAG \"unknown\"/TAG \"nightly-build\"/g" git-version.cmake
+sed -i "52d" git-version.cmake
 
-# Replacement of python-2.x Python3.x check presence and build if found.
-if $(python3 -c 'import sys' 2>/dev/null); then
-  python3 setup.py install --root=$PKG
-fi
+mkdir -p build
+cd build
+  cmake \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release ..
+  make
+  make install/strip DESTDIR=$PKG
+cd ..
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a PKG-INFO  $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a \
+  CREDITS.txt MAME\ License.txt README.md \
+  $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-makepkg -l y -c n -p $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
