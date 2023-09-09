@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for hunspell-en
 
 # Copyright 2014, Pablo Santamaria (pablosantamaria@gmail.com)

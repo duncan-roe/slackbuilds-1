@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+set -x
 # ex:set ai shiftwidth=4 inputtab=spaces smarttab noautotab:
 
 # Slackware build script for LibreOffice
@@ -75,11 +75,11 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+tar xf $CWD/$SRCNAM-$VERSION.tar.xz
 cd $SRCNAM-$VERSION
 
 if [ -r $CWD/$SRCNAM-${VERSION}-srcs.tar.xz ]; then
-  tar xvf $CWD/$SRCNAM-${VERSION}-srcs.tar.xz
+  tar xf $CWD/$SRCNAM-${VERSION}-srcs.tar.xz
   # For 7.2.0.4 these aren't found as previously so unpack them manually
   cd $TMP
   tar xf libreoffice-${VERSION}/external/tarballs/libreoffice-translations-${VERSION}.tar.xz
