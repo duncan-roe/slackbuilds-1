@@ -67,7 +67,7 @@ find -L . \
 
 make -j$(($(nproc)+1)) $EXTRAPARMS \
   DYNAMIC_ARCH=1 \
-  TARGET=GENERIC \
+  TARGET=$TARGET \
   NO_STATIC=1 \
   NO_AFFINITY=1 \
   BUILD_RELAPACK=1 \
