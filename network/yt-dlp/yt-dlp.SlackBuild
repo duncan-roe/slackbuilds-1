@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for yt-dlp
 
 # Written by B. Watson (urchlay@slackware.uk)
@@ -54,7 +54,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM
-tar xvf $CWD/$PRGNAM.tar.gz
+tar xf $CWD/$PRGNAM.tar.gz
 cd $PRGNAM
 chown -R root:root .
 find -L .  -perm /111 -a \! -perm 755 -a -exec chmod 755 {} \+ -o \

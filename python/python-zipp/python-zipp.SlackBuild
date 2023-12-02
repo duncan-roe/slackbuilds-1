@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for python-zipp
 
 # Copyright 2023  fourtysixandtwo <fourtysixandtwo@sliderr.net>
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cp $CWD/setup.py $SRCNAM-$VERSION
 cd $SRCNAM-$VERSION
 chown -R root:root .

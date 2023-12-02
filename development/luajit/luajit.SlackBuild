@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for luajit
 
 # Copyright 2018 Erik Falor <ewfalor@gmail.com>, Logan, Utah, USA
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf LuaJIT-$VERSION
-tar zxvf $CWD/LuaJIT-$VERSION.tar.gz
+tar zxf $CWD/LuaJIT-$VERSION.tar.gz
 cd LuaJIT-$VERSION
 chown -R root:root .
 find -L . \
@@ -81,6 +81,12 @@ find -L . \
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
+make -j$(($(nproc)+1)) \
+  Q=  \
+  PREFIX=/usr \
+  MULTILIB=lib${LIBDIRSUFFIX} \
+  INSTALL_LIB=/usr/lib${LIBDIRSUFFIX} \
+  INSTALL_MAN=/usr/man/man1 ||
 make \
   Q=  \
   PREFIX=/usr \

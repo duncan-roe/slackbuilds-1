@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for mujs
 
 # Written by Valerio Talora <navigare@gmx.com>
@@ -74,7 +74,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 sed -i -e '/LIBREADLINE +=/ s/$/ -ltermcap/' Makefile
 
@@ -86,7 +86,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 chmod 644 docs/*.png
 
-make shared && make install-shared \
+{ make -j$(($(nproc)+1)) shared || make shared; } && make install-shared \
   prefix=/usr \
   libdir=/usr/lib${LIBDIRSUFFIX} \
   DESTDIR=$PKG

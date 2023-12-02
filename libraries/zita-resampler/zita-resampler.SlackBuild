@@ -1,7 +1,7 @@
 #!/bin/bash
 # Slackware build script for <zita-resampler>
 # Written by Michales Michaloudes korgie@gmail.com
-
+set -x
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=zita-resampler
@@ -50,7 +50,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -65,12 +65,12 @@ sed -e '/native/d' \
       -i source/Makefile
 sed -e 's|\ $(BINDIR)|\ $(DESTDIR)$(BINDIR)|' apps/Makefile
 
-make -C source
+make -j$(($(nproc)+1)) -C source || make -C source
 ln -sv lib$PRGNAM.so.$VERSION source/lib$PRGNAM.so
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS -I../source" \
 LDFLAGS+=" -L../source" \
-make -C apps
+make -j$(($(nproc)+1)) -C apps || make -C apps
 make -C source install DESTDIR=$PKG PREFIX=/usr SUFFIX="$LIBDIRSUFFIX"
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

@@ -21,7 +21,7 @@
 #  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+set -x
 # 20220420 bkw: Modified by SlackBuilds.org, BUILD=2:
 # - name SlackBuild *correctly* in the doc dir.
 
@@ -72,7 +72,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.xz
+tar xf $CWD/$SRCNAM-$VERSION.tar.xz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -86,7 +86,7 @@ cmake \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
   .
-make
+make -j$(($(nproc)+1)) || make
 make install/strip DESTDIR=$PKG
 
 mv $PKG/usr/share/man $PKG/usr/man

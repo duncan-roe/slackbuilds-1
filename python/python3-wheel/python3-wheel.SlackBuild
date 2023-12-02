@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 # Slackware build script for python3-wheel
-
+set -x
 # Copyright 2023  fourtysixandtwo <fourtysixandtwo@sliderr.net>
 # All rights reserved.
 #

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for libplacebo
 
 # Copyright 2019-2020 Hunter Sezen California, USA
@@ -68,7 +68,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-v$VERSION
-tar xvf $CWD/$PRGNAM-v$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-v$VERSION.tar.gz
 cd $PRGNAM-v$VERSION
 patch -p0 < $CWD/use_meson-0.59.4.diff
 chown -R root:root .

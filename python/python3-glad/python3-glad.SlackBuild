@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for python3-glad
 
 # Copyright 2023 Christoph Willing  Brisbane, Australia
