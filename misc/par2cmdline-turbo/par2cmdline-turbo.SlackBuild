@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for Dungeon Crawl Stone Soup
+# Slackware build script for par2cmdline-turbo
 
-# Copyright 2021, SlackBuilds.org Project, David Melik, Spokane, WA, USA
+# Copyright 2023 Thibaut Notteboom, Paris, FRANCE
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,8 +24,8 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=stone_soup
-VERSION=${VERSION:-0.28.0}
+PRGNAM=par2cmdline-turbo
+VERSION=${VERSION:-1.1.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -38,9 +38,6 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
-# the name of the created package would be, and then exit. This information
-# could be useful to other scripts.
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
@@ -59,6 +56,9 @@ elif [ "$ARCH" = "i686" ]; then
 elif [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="-O2 -fPIC"
   LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
 else
   SLKCFLAGS="-O2"
   LIBDIRSUFFIX=""
@@ -70,7 +70,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION-nodeps.tar.xz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -79,52 +79,39 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-cd source
-  # do not remove the quotes from SAVEDIR='~/.crawl/'
-  # (~ needs to be evaluated at runtime, not buildtime)
-  make $TARGET \
-    prefix=/usr \
-    COPY_FONTS=1 \
-    DATADIR=/usr/share/games/crawl \
-    SAVEDIR='~/.crawl/' \
-    SDL2=1 \
-    TILES=1
-  make $TARGET install \
-    prefix=/usr \
-    COPY_FONTS=1 \
-    DATADIR=/usr/share/games/crawl \
-    DESTDIR=$PKG \
-    SAVEDIR='~/.crawl/' \
-    SDL2=1 \
-    TILES=1
-  make clean
-  make $TARGET \
-    prefix=/usr \
-    DATADIR=/usr/share/games/crawl \
-    SAVEDIR='~/.crawl/'
-cp crawl $PKG/usr/games/crawl-ascii
-cd ..
+aclocal
+automake --add-missing
+autoconf
 
-find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
-  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --disable-static \
+  --build=$ARCH-slackware-linux
 
-mkdir -p $PKG/usr/man/man6
-gzip -9 -c docs/crawl.6 > $PKG/usr/man/man6/crawl.6.gz
+make
+make check
+make install-strip DESTDIR=$PKG
 
-mkdir -p $PKG/usr/share/{applications,pixmaps}
-cp $CWD/stone_soup_icon-32x32.png $PKG/usr/share/pixmaps
-cp $CWD/stone_soup.desktop $PKG/usr/share/applications
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE \
+cp -a \
+  AUTHORS COPYING ChangeLog README README.md ROADMAP \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
-ln -sf /usr/share/games/crawl/docs $PKG/usr/doc/$PRGNAM-$VERSION/docs
-
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

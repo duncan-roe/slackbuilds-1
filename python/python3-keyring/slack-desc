@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                |-----handy-ruler------------------------------------------------------|
-opera-developer: opera-developer (A fast and secure web browser)
-opera-developer:
-opera-developer: Opera is a graphical Web browser available on several platforms.
-opera-developer: The desktop version runs on GNU/Linux and FreeBSD. Versions for
-opera-developer: Macintosh and Windows are also available.
-opera-developer:
-opera-developer: Homepage: https://www.opera.com/
-opera-developer:
-opera-developer:
-opera-developer:
-opera-developer:
+python3-keyring: python3-keyring (Python keyring library)
+python3-keyring:
+python3-keyring: The Python keyring lib provides a easy way to access the system
+python3-keyring: keyring service from python. It can be used in any application
+python3-keyring: that needs safe password storage.
+python3-keyring:
+python3-keyring: Homepage: https://github.com/jaraco/keyring
+python3-keyring:
+python3-keyring:
+python3-keyring:
+python3-keyring:
