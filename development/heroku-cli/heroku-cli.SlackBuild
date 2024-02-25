@@ -1,8 +1,8 @@
 #!/bin/bash
-#
-# Slackware build script for localepurge.
-#
-# Copyright 2016-2023  Edinaldo P. Silva, Rio de Janeiro, Brazil.
+
+# Slackware build script for heroku-cli
+
+# Copyright 2024 Diniz Bortolotto <diniz.bortolotto@gmail.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,19 +22,24 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# 20220212 bkw: Modified by SlackBuilds.org:
-# - stop writing to $CWD. *nothing* should *ever* do this.
-# - make this a noarch package since there's no compiled code.
-
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=localepurge
-VERSION=${VERSION:-0.7.3.10}
-BUILD=${BUILD:-2}
+PRGNAM=heroku-cli
+VERSION=${VERSION:-8.10.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-ARCH=noarch
+#Heroku download is allways on latest version
+DOWNLOAD=heroku-linux-x64.tar.gz
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
@@ -51,39 +56,64 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/${PRGNAM}_${VERSION}.tar.xz
+
+tar xvf $CWD/$DOWNLOAD
+
+#Tarball has a heroku dir only - check/update version
+TARVRS=$(head heroku/package.json | grep version | cut -d'"' -f4)
+
+if [ $VERSION != $TARVRS ]
+then
+	echo ""
+	echo "**********************************************"
+	echo "************   Fix Slackbuild!!   ************"
+	echo "**********************************************"
+	echo "   Tarball version ($TARVRS) is not equal the "
+	echo "   package version ($VERSION). Edit slackbuild"
+	echo "   replacing VERSION $VERSION by $TARVRS.     "
+	echo "**********************************************"
+	echo ""
+	exit 1
+fi
+
+#Update/move heroku dir to PRGNAM-VERSION
+mv heroku $PRGNAM-$VERSION 
 cd $PRGNAM-$VERSION
+
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \+ -o \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-install -D -m755 usr/sbin/localepurge $PKG/usr/sbin/localepurge
-install -D -m644 debian/localepurge.8 $PKG/usr/man/man8/localepurge.8
-install -D -m644 $CWD/locale.nopurge $PKG/etc/locale.nopurge.new
+#Not a configure/make/make install program.
+#So we will put it on /opt
+mkdir -p $PKG/opt/$PRGNAM
+cp -a \
+    autocomplete-scripts \
+    node_modules \
+    lib \
+    bin \
+    *.json \
+    $PKG/opt/$PRGNAM
 
-gzip $PKG/usr/man/man*/*
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-CACHEDIR=$PKG/var/cache/localepurge
-mkdir -p $CACHEDIR
-
-find /usr/share/locale -maxdepth 1 -type d -name "*" -printf "%f\n" | \
-  grep "^[a-z]" | \
-  cut -d" " -f1 | \
-  sort -u \
-  > $CACHEDIR/localelist
-
-DOCS="debian/README.Debian debian/changelog debian/copyright"
+mkdir -p $PKG/usr/bin
+ln -s /opt/$PRGNAM/bin/heroku $PKG/usr/bin/heroku
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp $DOCS $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a \
+    LICENSE \
+    README.md \
+    $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+

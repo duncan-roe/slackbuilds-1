@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
            |-----handy-ruler------------------------------------------------------|
-localepurge: localepurge (remove superfluous locale data)
-localepurge:
-localepurge: localepurge removes superfluous locale data from your system. It is a
-localepurge: small script to recover disk space wasted for unneeded locale files
-localepurge: and localized man pages.
-localepurge:
-localepurge: Homepage: https://packages.debian.org/search?keywords=localepurge
-localepurge:
-localepurge:
-localepurge:
-localepurge:
+msgpack-c-c: msgpack-c-c (C implementation of MessagePack)
+msgpack-c-c:
+msgpack-c-c: msgpack-c-c is a C implementation of MessagePack,
+msgpack-c-c: a binary serialisation format.
+msgpack-c-c: This package does not include the C++ implementation.
+msgpack-c-c:
+msgpack-c-c:
+msgpack-c-c: Home page: https://github.com/msgpack/msgpack-c
+msgpack-c-c:
+msgpack-c-c:
+msgpack-c-c:
