@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
          |-----handy-ruler------------------------------------------------------|
-configobj: configobj (configuration file python module)
-configobj:
-configobj: A python module for ultra simple handling of configuration files.
-configobj: Also useful for human readable data persistence. Flexible and simple.
-configobj:
-configobj: Homepage: http://www.voidspace.org.uk/python/modules.shtml#configobj
-configobj:
-configobj:
-configobj:
-configobj:
-configobj:
+cmake3.30: cmake3.30 (a build of cmake 3.30 in /opt)
+cmake3.30:
+cmake3.30: This version of cmake is needed to build certain packages which
+cmake3.30: require cmake newer than the one in 15.0
+cmake3.30:
+cmake3.30:
+cmake3.30:
+cmake3.30:
+cmake3.30:
+cmake3.30:
+cmake3.30:
