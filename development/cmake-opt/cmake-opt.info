@@ -1,4 +1,4 @@
-PRGNAM="cmake3.30"
+PRGNAM="cmake-opt"
 VERSION="3.30.5"
 HOMEPAGE="https://www.cmake.org"
 DOWNLOAD="https://github.com/Kitware/CMake/releases/download/v3.30.5/cmake-3.30.5.tar.gz"
