@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                |-----handy-ruler------------------------------------------------------|
-rtorrent-python: rtorrent-python (A simple rTorrent interface)
-rtorrent-python:
-rtorrent-python: The xmlrpc interface to rTorrent is extremely unintuitive and has
-rtorrent-python: very little documentation, this project aims to make interfacing
-rtorrent-python: with rTorrent much easier.
-rtorrent-python:
-rtorrent-python: Homepage: https://github.com/cjlucas/rtorrent-python
-rtorrent-python:
-rtorrent-python:
-rtorrent-python:
-rtorrent-python:
+nemo-fileroller: nemo-fileroller (File archiver extension for Nemo)
+nemo-fileroller:
+nemo-fileroller: This extension adds entries to the context menu in Nemo, which allow
+nemo-fileroller: you to make use of the compress and extract functions of the File
+nemo-fileroller: Roller archive manager.
+nemo-fileroller:
+nemo-fileroller:
+nemo-fileroller:
+nemo-fileroller:
+nemo-fileroller:
+nemo-fileroller:
