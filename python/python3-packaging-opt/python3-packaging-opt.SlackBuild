@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for python3-packaging-opt
 
 # Copyright 2024  fourtysixandtwo <fourtysixandtwo@sliderr.net>
@@ -57,7 +57,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
