@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for GitHub CLI
 
 # Copyright 2020-2025 Ebben Aries <slackbuilds@dscp.org>
@@ -55,7 +55,7 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $PKG
-ar p $CWD/${DEBNAM}_${VERSION}_linux_$DEBARCH.deb data.tar.gz | tar xzv
+ar p $CWD/${DEBNAM}_${VERSION}_linux_$DEBARCH.deb data.tar.gz | tar xz
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
