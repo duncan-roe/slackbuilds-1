@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for platform
+# Slackware build script for vzic
 
-# Copyright 2015-2017 Larry Hajali <larryhaja[at]gmail[dot]com>
-# Copyright 2024      Jeremy Hansen <jebrhansen+SBo@gmail.com>
+# Copyright 2025, Lockywolf
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -25,11 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=platform
-VERSION=${VERSION:-2.1.0}
+PRGNAM=vzic
+VERSION=${VERSION:-0.0.0.20250603}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+
+COMMIT=0f5470c97d612e3a0c688eef28b14bcda426f5cc
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -57,6 +58,9 @@ elif [ "$ARCH" = "i686" ]; then
 elif [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="-O2 -fPIC"
   LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
 else
   SLKCFLAGS="-O2"
   LIBDIRSUFFIX=""
@@ -67,45 +71,33 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$PRGNAM-$VERSION
+rm -rf $PRGNAM-$COMMIT
+tar xvf $CWD/$PRGNAM-$COMMIT.tar.gz
+cd $PRGNAM-$COMMIT
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \; -o \
+  -o -perm 511 \) -exec chmod 755 {} + -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} +
 
-# Fix cmake install path.
-patch -p1 < $CWD/platform-2.1.0-install.patch
+make
+mkdir -p $PKG/usr/bin
+cp vzic $PKG/usr/bin
 
-mkdir -p build
-cd build
-  cmake \
-    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
-    -DBUILD_SHARED_LIBS=1 \
-    -DCMAKE_BUILD_TYPE=Release ..
-  make
-  make install/strip DESTDIR=$PKG
-cd ..
-
-rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
+
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a \
-  README.md debian/copyright \
-  $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a README.md \
+  LICENSE.txt $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
