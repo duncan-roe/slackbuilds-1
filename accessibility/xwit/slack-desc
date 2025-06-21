@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
     |-----handy-ruler------------------------------------------------------|
-vsxu: vsxu (OpenGL Music Visualisation and Graphics Effects)
-vsxu:
-vsxu: VSXu (VSX Ultra) is an OpenGL-based (hardware-accelerated),
-vsxu: modular programming environment with its main purpose to
-vsxu: visualize music and create graphic effects in real-time.
-vsxu:
-vsxu:
-vsxu:
-vsxu:
-vsxu:
-vsxu:
+xwit: xwit (X Window Interface Tool)
+xwit:
+xwit: xwit is a hodge-podge collection of simple routines to call some
+xwit: of those X11 functions that don't already have any utility commands
+xwit: built around them. The reasoning behind this is that loosely every X
+xwit: function should be accessible from a shell script.
+xwit:
+xwit:
+xwit:
+xwit:
+xwit:
