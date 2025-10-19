@@ -32,9 +32,7 @@ TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
 ARCH=noarch
-
-# Initalize SRCPREFIX variable for extracting the tarball
-SRCSUFFIX=master.lmde7
+COMMITVER=${COMMITVER:-2c87a9126575be80b2c75b27fe0e952d63101c3d}
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
@@ -48,14 +46,15 @@ OUTPUT=${OUTPUT:-/tmp}
 set -e
 
 # "tar xvf" command explanation:
-# The source tarball is named 'mint-themes-master.lmde7'
+# This SlackBuild downloads according to the commit, not the package version.
+# (i.e. the tarball filename is mint-themes-2c87a9126575be80b2c75b27fe0e952d63101c3d.tar.gz)
 # Extract the tarball and rename the extracted folder to 'mint-themes-2.3.3'
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$SRCSUFFIX.tar.gz --transform s/$PRGNAM-$SRCSUFFIX/$PRGNAM-$VERSION/
+tar xvf $CWD/$PRGNAM-$COMMITVER.tar.gz --transform s/$PRGNAM-$COMMITVER/$PRGNAM-$VERSION/
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
