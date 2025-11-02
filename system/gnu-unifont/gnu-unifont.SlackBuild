@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gnu-unifont
 
 # Copyright 2010 crocket (crockabiscuit@gmail.com)
@@ -61,7 +61,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION
-tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION.tar.gz
 cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
