@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for rust-opt
 
 # Copyright 2024-2025 K. Eugene Carlson  Tsukuba, Japan
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$VERSION-$TRIPLET
-tar xvf $CWD/$SRCNAM-$VERSION-$TRIPLET.tar.gz
+tar xf $CWD/$SRCNAM-$VERSION-$TRIPLET.tar.gz
 cd $SRCNAM-$VERSION-$TRIPLET
 
 chown -R root:root .
