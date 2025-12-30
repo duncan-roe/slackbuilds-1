@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 # Slackware build script for virt-manager
 
 # Written by Ash Wiren  ash@spooksoftware.com # Released to public domain.
@@ -44,7 +44,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
