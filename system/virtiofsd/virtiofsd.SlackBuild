@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for virtiofsd
 
 # Copyright 2023-2025 Matteo Bernardini <ponce@slackbuilds.org>, Pisa, Italy
@@ -63,9 +63,9 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-v$VERSION
-tar xvf $CWD/$PRGNAM-v$VERSION.tar.?z*
+tar xf $CWD/$PRGNAM-v$VERSION.tar.?z*
 cd $PRGNAM-v$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION-vendor.tar.xz
+tar xf $CWD/$PRGNAM-$VERSION-vendor.tar.xz
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
