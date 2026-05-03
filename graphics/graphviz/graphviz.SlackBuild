@@ -28,8 +28,8 @@ set -x
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=graphviz
-VERSION=${VERSION:-14.1.2}
-BUILD=${BUILD:-1}
+VERSION=${VERSION:-14.1.5}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar xf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -87,7 +87,6 @@ find -L . \
 
 cp README.md README  # Or fail miserably...
 
-./autogen.sh
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}" \
