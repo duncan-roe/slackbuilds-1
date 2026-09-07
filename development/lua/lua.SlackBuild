@@ -75,17 +75,17 @@ patch -p1 < $CWD/lua.usr.local.patch
 sed -i "s|lib/lua|$LIB/lua|" src/luaconf.h
 
 make -j$(($(nproc)+1)) linux \
-  CFLAGS="$SLKCFLAGS \$(MYCFLAGS)" \
-  INSTALL_TOP=/usr \
-  INSTALL_LIB=/usr/lib${LIBDIRSUFFIX} \
-  INSTALL_LMOD=/usr/share/lua/5.1 \
-  INSTALL_CMOD=/usr/lib${LIBDIRSUFFIX}/lua/5.1 ||
-make linux \
   MYCFLAGS="$SLKCFLAGS" \
   INSTALL_TOP=/usr \
   INSTALL_LIB=$ULIB \
   INSTALL_LMOD=/usr/share/lua/$SHORTVER \
-  INSTALL_CMOD=$ULIB/lua/$SHORTVER
+  INSTALL_CMOD=$ULIB/lua/$SHORTVER ||
+  make linux \
+    MYCFLAGS="$SLKCFLAGS" \
+    INSTALL_TOP=/usr \
+    INSTALL_LIB=$ULIB \
+    INSTALL_LMOD=/usr/share/lua/$SHORTVER \
+    INSTALL_CMOD=$ULIB/lua/$SHORTVER
 
 make linux install \
   MYCFLAGS="$SLKCFLAGS" \
