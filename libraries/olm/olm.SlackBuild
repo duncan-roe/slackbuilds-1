@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for olm
 
 # Copyright 2022 Roger Krowiak
@@ -71,7 +71,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar jxvf $CWD/$PRGNAM-$VERSION.tar.bz2
+tar jxf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -89,7 +89,7 @@ cmake \
   -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
   -DCMAKE_FIND_USE_PACKAGE_ROOT_PATH=OFF \
   -DCMAKE_BUILD_TYPE=Release ..
-make
+make -j$(($(nproc)+1)) || make
 ( cd tests ; ctest . )
 make install DESTDIR=$PKG
 cd ..
