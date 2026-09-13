@@ -95,7 +95,7 @@ CFLAGS="$SLKCFLAGS" \
   --enable-gssapi-krb5=yes \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make DESTDIR=$PKG install-strip
 gzip -9 $PKG/usr/man/man*/*
 

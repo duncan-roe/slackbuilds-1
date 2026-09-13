@@ -93,7 +93,7 @@ CXXFLAGS="$SLKCFLAGS" \
 # Ref: https://bugzilla.gnome.org/show_bug.cgi?id=696900
 sed 's/-DG_DISABLE_DEPRECATED//' -i linc2/src/Makefile
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

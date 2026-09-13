@@ -129,7 +129,7 @@ cd build
     -DENABLE_LIBUNINAMESLIST=OFF \
     -DENABLE_DOCS=${DOCS:-OFF} \
     -DCMAKE_BUILD_TYPE=Release ..
-  make -j$(($(nproc)+1)) VERBOSE=1 || make VERBOSE=1
+  make || make -j1 VERBOSE=1
   make install/strip DESTDIR=$PKG
   gzip -9 $PKG/usr/man/man*/*
 cd ..

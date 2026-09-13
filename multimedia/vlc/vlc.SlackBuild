@@ -139,7 +139,7 @@ LDFLAGS="$SLKLDFLAGS" \
   $runasroot \
   $aom \
   $lua
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make DESTDIR=$PKG install
 
 install -D -m0644 extras/analyser/vlc.vim $PKG/usr/share/vim/vimfiles/syntax/vlc.vim

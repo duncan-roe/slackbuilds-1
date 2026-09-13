@@ -177,7 +177,7 @@ qmails:x:$QMAILS_USER:$QMAIL_GROUP::/var/qmail:/bin/true
 # Set up the commands to run in the chroot jail
 cat >commands <<////
 cd /$PRGNAM-$VERSION
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make setup check
 ////
 

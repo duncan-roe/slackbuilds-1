@@ -128,7 +128,7 @@ PYTHON="/usr/bin/python3" \
   --$NLS-nls \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 make install-docs DESTDIR=$PKG
 

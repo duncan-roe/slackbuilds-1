@@ -98,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --enable-shared
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 cp -a libdca/dca_internal.h $PKG/usr/include
 rm -f $PKG/usr/lib*/lib*.a  # 20220418 bkw: broken symlink

@@ -92,7 +92,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-openssl \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG TARGET_DOCDIR=$PKG/usr/doc/$PRGNAM-$VERSION
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

@@ -93,7 +93,7 @@ mkdir -p build
 cd build
 qmake PREFIX="/usr" QMAKE_CFLAGS+="$SLKCFLAGS" QMAKE_CXXFLAGS+="$SLKCFLAGS" \
   CONFIG+=release SHOTCUT_VERSION="$VERSION" DEFINES+=SHOTCUT_NOUPGRADE ..
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 lrelease ../translations/*.ts
 make install INSTALL_ROOT=$PKG
 cd ..

@@ -106,8 +106,8 @@ mkdir -p $PKG/usr/include/{gsm,libgsm}
 mkdir -p $PKG/usr/man/man{1,3}
 
 # Parallel builds are broken
-make CCINC="$SLKCFLAGS" VER="$VERSION" -j$(($(nproc)+1)) ||
-make CCINC="$SLKCFLAGS" VER="$VERSION" -j1
+make CCINC="$SLKCFLAGS" VER="$VERSION" ||
+make -j1 V=1 CCINC="$SLKCFLAGS" VER="$VERSION"
 make -j1 install \
   INSTALL_ROOT=$PKG/usr \
   VER="$VERSION" \

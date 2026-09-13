@@ -92,7 +92,7 @@ cd build
     -DPR_SET_CHILD_SUBREAPER=36 \
     -DPR_GET_CHILD_SUBREAPER=37 \
     -DCMAKE_BUILD_TYPE=Release ..
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   make install DESTDIR=$PKG
 cd ..
 

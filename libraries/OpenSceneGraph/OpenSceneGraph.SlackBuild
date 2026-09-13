@@ -76,7 +76,7 @@ cd build
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_OSG_EXAMPLES=ON \
 
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   make install DESTDIR=$PKG
 
   # No binaries in /usr/share. Move examples to /usr/bin

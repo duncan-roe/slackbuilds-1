@@ -87,8 +87,8 @@ CFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) install-strip DESTDIR=$PKG ||
-make install-strip DESTDIR=$PKG
+make install-strip DESTDIR=$PKG ||
+  make -j1 V=1 install-strip DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la
 

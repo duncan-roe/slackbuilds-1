@@ -72,7 +72,7 @@ perl Makefile.PL \
   PREFIX=/usr \
   INSTALLDIRS=vendor \
   INSTALLVENDORMAN3DIR=/usr/man/man3
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make test
 make install DESTDIR=$PKG
 

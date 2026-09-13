@@ -95,7 +95,7 @@ conf() {
 # first time around, build everything, with python2 support.
 setpyver
 conf
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 # 2nd build, python3 support only. configure has "python" hardcoded as

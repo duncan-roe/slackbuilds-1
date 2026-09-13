@@ -64,8 +64,8 @@ patch -p1 < $CWD/Makefile.patch
 sed -i '/chown/s,\.,:,' Makefile
 
 make clean # oops :-)
-make -j$(($(nproc)+1)) EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr ||
-make EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr
+make EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr ||
+  make -j1 V=1 EXTRA_CFLAGS="$SLKCFLAGS" PREFIX=/usr
 strip $PRGNAM
 make install PREFIX=/usr DESTDIR=$PKG
 gzip $PKG/usr/man/man*/*

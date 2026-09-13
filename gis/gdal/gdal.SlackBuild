@@ -163,7 +163,7 @@ mkdir build
     $TESTBUILDFLAGS \
     -DCMAKE_BUILD_TYPE=Release \
     ..
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   [[ $TESTBUILD == "YES" ]] && make test
   make install/strip DESTDIR=$PKG
 )

@@ -105,7 +105,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   $mmx
 
-make -j$(($(nproc)+1)) || make V=1
+make || make -j1 V=1
 make -j1 install DESTDIR=$PKG
 
 rm -f $PKG/usr/share/applications/cin.desktop

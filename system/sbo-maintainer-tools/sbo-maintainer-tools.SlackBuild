@@ -55,7 +55,7 @@ find . ! -type l    -a \( \
   \(     -perm /111 -a ! -perm 755 -a -exec chmod -f 755 {} + \) -o \
   \(   ! -perm /111 -a ! -perm 644 -a -exec chmod -f 644 {} + \) \)
 
-make -j$(($(nproc)+1)) install PREFIX=/usr DESTDIR=$PKG
+make install PREFIX=/usr DESTDIR=$PKG
 
 PKGDOC=$PKG/usr/doc/$PRGNAM-$VERSION
 mkdir -p $PKGDOC

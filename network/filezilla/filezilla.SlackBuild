@@ -101,7 +101,7 @@ patch -p1 < $CWD/interface_Mainfrm_h_include_list.patch
   $pugixml \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la

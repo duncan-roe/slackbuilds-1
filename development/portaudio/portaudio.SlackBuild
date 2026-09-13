@@ -106,7 +106,7 @@ sed -i '/^all:/s,tests *examples *, ,' Makefile
 # 20240825 bkw: doing this first makes parallel builds work (-jN).
 make lib/libportaudio.la
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 strip $PKG/usr/lib*/lib*.so.*.*

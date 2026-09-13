@@ -101,7 +101,7 @@ CXXFLAGS="$SLKCFLAGS -std=c++11" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install \
   htmldir=/usr/doc/$PRGNAM-$VERSION/html \
   DESTDIR=$PKG

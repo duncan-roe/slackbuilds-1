@@ -121,7 +121,7 @@ CPPFLAGS="$SLKCFLAGS" \
   --enable-static=no \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 install -D -m 0644 build/CMakeFiles/hdf5{,_hl}{,_cpp,_fortran}.pc \

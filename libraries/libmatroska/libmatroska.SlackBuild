@@ -90,7 +90,7 @@ cmake -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
 	  -DBUILD_SHARED_LIBS=ON \
 	  -DCMAKE_BUILD_TYPE=Release ..
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 cd ..

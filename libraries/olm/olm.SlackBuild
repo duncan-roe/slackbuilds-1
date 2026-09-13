@@ -89,7 +89,7 @@ cmake \
   -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
   -DCMAKE_FIND_USE_PACKAGE_ROOT_PATH=OFF \
   -DCMAKE_BUILD_TYPE=Release ..
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 ( cd tests ; ctest . )
 make install DESTDIR=$PKG
 cd ..

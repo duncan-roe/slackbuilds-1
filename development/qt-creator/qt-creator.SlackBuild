@@ -125,7 +125,7 @@ qmake-qt5 -r qtcreator.pro                 \
   QBS_INSTALL_DIR=/usr                     \
   DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install INSTALL_ROOT=$PKG
 
 if which qdoc-qt5 &>/dev/null; then

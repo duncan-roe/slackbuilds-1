@@ -69,8 +69,8 @@ perl Makefile.PL \
   INSTALLDIRS=vendor \
   INSTALLVENDORMAN1DIR=/usr/man/man1 \
   INSTALLVENDORMAN3DIR=/usr/man/man3
-make -j$(($(nproc)+1)) || make
-make -j$(($(nproc)+1)) test || make test
+make || make -j1 V=1
+make test || make -j1 V=1 test
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

@@ -95,7 +95,7 @@ CXXFLAGS="$SLKCFLAGS" \
 # remove x86_64 binaries from examples/
 make clean
 
-make -j$(($(nproc)+1))
+make
 make install DESTDIR=$PKG
 
 # Cmake was added in version 3.0.0.  Going to stick with

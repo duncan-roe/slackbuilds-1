@@ -104,7 +104,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make V=1
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 PKGDOC=$PKG/usr/doc/$PRGNAM-$VERSION

@@ -77,7 +77,7 @@ chmod 644 *.png *.svg *.desktop
 lupdate-qt5 unetbootin.pro
 lrelease-qt5 unetbootin.pro
 qmake-qt5 -config release "DEFINES += NOSTATIC" "RESOURCES -= unetbootin.qrc"
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 strip --strip-unneeded $PRGNAM
 
 mkdir -p $PKG/usr/bin

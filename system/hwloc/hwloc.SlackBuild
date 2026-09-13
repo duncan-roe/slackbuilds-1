@@ -85,7 +85,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   --disable-debug
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 rm -f $PKG/usr/lib*/*.la
 

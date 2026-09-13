@@ -88,12 +88,12 @@ sed -i \
   Makefile librtmp/Makefile
 
 export XCFLAGS="$SLKCFLAGS"
-make -j$(($(nproc)+1)) \
-  prefix=/usr \
-  libdir=/usr/lib$LIBDIRSUFFIX ||
 make \
   prefix=/usr \
-  libdir=/usr/lib$LIBDIRSUFFIX
+  libdir=/usr/lib$LIBDIRSUFFIX ||
+  make -j1 V=1 \
+    prefix=/usr \
+    libdir=/usr/lib$LIBDIRSUFFIX
 
 make \
   prefix=/usr \

@@ -74,15 +74,15 @@ sed -i \
 mkdir build
 
 GO111MODULE=auto \
-make -j$(($(nproc)+1)) \
-  BUILDTAGS="seccomp" \
-  GIT_COMMIT=$GITHASH \
-  GOPATH=$TMP/$PRGNAM-$VERSION/build ||
-GO111MODULE=auto \
 make \
   BUILDTAGS="seccomp" \
   GIT_COMMIT=$GITHASH \
-  GOPATH=$TMP/$PRGNAM-$VERSION/build
+  GOPATH=$TMP/$PRGNAM-$VERSION/build ||
+  GO111MODULE=auto \
+  make -j1 V=1 \
+    BUILDTAGS="seccomp" \
+    GIT_COMMIT=$GITHASH \
+    GOPATH=$TMP/$PRGNAM-$VERSION/build
 make install DESTDIR=$PKG PREFIX=/usr
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

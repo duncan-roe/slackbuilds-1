@@ -167,7 +167,7 @@ cp $CWD/ipxe-git-$IPXE.tar.gz tools/firmware/etherboot/_ipxe.tar.gz
   tar -xf $CWD/seabios-$SEABIOS.tar.?z || tar -xf $CWD/seabios-rel-$SEABIOS.tar.?z
   mv seabios-$SEABIOS seabios-dir-remote || mv seabios-rel-$SEABIOS seabios-dir-remote
   ln -s seabios-dir-remote seabios-dir
-  make -C seabios-dir defconfig
+  make -C seabios-dir defconfig || make -j1 -C seabios-dir V=1 defconfig
   # OVMF
   tar -xf $CWD/xen-ovmf-$OVMF.tar.bz2
   mv xen-ovmf-$OVMF ovmf-dir-remote
@@ -217,7 +217,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-extra-qemuu-configure-args="$CONF_QEMUU" \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) install-xen \
+make install-xen \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \
@@ -227,7 +227,7 @@ make -j$(($(nproc)+1)) install-xen \
 echo CONFIG_GOLANG=n >> xen/.config
 echo CONFIG_GOLANG=n > tools/.config
 
-make -j$(($(nproc)+1)) install-tools \
+make install-tools \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \
@@ -243,7 +243,7 @@ if [ "$BUILD_STUBDOM" = "yes" ]; then
     DESTDIR=$PKG
 fi
 
-make -j$(($(nproc)+1)) install-docs \
+make install-docs \
   docdir=/usr/doc/$PRGNAM-$VERSION \
   DOCDIR=/usr/doc/$PRGNAM-$VERSION \
   mandir=/usr/man \

@@ -111,7 +111,7 @@ cmake \
   ..
 
 [[ $TESTBUILD == "YES" ]] && make test
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install/strip DESTDIR=$PKG
 cd ..
 

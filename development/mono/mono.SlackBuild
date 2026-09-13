@@ -98,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-compile-warnings \
   --with-mcs-docs=no \
   --build=$ARCH-slackware-linux
-make -j$(($(nproc)+1)) || make -j1
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.a

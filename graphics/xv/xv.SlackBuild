@@ -87,7 +87,7 @@ fi
 zcat $CWD/xv.jasper.diff.gz | patch -p1 --verbose --backup --suffix=.orig
 zcat $CWD/xv-libpng-1.5.patch.gz | patch -p0 --verbose --backup --suffix=.orig
 cat $CWD/xv.gcc11.patch | patch -p1 --verbose --backup --suffix=.orig
-make -j$(($(nproc)+1)) -f Makefile.std || make -f Makefile.std
+make -f Makefile.std || make -j1 -f Makefile.std V=1
 strip --strip-unneeded bggen vdcomp xcmap xv xvpictoppm
 mkdir -p $PKG/usr/bin
 cat bggen > $PKG/usr/bin/bggen

@@ -98,7 +98,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DENABLE_CLI=OFF \
     -DENABLE_SHARED=OFF \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make -j$(($(nproc)+1)) || make V=1
+  make || make -j1 V=1 V=1
 
   cd ../build-10
 
@@ -112,7 +112,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DENABLE_CLI=OFF \
     -DENABLE_SHARED=OFF \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make -j$(($(nproc)+1)) || make V=1
+  make || make -j1 V=1 V=1
 
   cd ../build-8
 
@@ -130,7 +130,7 @@ if [ "$ARCH" = "x86_64" ]; then
     -DLINKED_10BIT=ON \
     -DLINKED_12BIT=ON \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make -j$(($(nproc)+1)) || make V=1
+  make || make -j1 V=1 V=1
 
 else
 
@@ -143,7 +143,7 @@ else
     -DLIB_INSTALL_DIR=lib${LIBDIRSUFFIX} \
     -DENABLE_SHARED=ON \
     -DCMAKE_BUILD_TYPE=Release ../source
-  make -j$(($(nproc)+1)) || make V=1
+  make || make -j1 V=1 V=1
 
 fi
 

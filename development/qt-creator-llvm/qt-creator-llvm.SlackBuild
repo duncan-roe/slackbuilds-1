@@ -116,7 +116,7 @@ cd build
     -DLLVM_ENABLE_RTTI=ON                               \
     -DLLVM_ENABLE_ASSERTIONS=OFF                        \
     ..
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   make install DESTDIR=$PKG
 cd ..
 

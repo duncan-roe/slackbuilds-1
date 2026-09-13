@@ -115,7 +115,7 @@ RRDDOCDIR=/usr/doc/$PRGNAM-$VERSION \
   --with-perl-options='INSTALLDIRS=vendor' \
   --with-ruby-options="sitedir=\${DESTDIR}/usr/lib${LIBDIRSUFFIX}/ruby/vendor_ruby"
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 
 # Correct man paths in the Perl bindings.
 sed -r -i 's|/usr/share/man|/usr/man|g' bindings/perl-piped/Makefile

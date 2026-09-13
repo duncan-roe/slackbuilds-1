@@ -106,7 +106,7 @@ if [ "${BOOTSTRAP:-yes}" = "yes" ] ; then
   mkdir -p $LIBTINFO_DIR
   ln -s /lib$LIBDIRSUFFIX/libncurses.so.5 $LIBTINFO_DIR/libtinfo.so.5
   LD_LIBRARY_PATH=$LIBTINFO_DIR \
-  make -j$(($(nproc)+1)) install || make -j1 install
+  make install || make -j1 V=1 install
   sed -i -r -e "s|^exec |LD_LIBRARY_PATH=$LIBTINFO_DIR exec |" $BOOTSTRAPDIR/usr/bin/ghc{,-pkg}-$VERSION
 
   BOOTSTRAPGHC=$BOOTSTRAPDIR/usr/bin/ghc

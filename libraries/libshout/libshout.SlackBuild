@@ -94,8 +94,8 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) docdir=/usr/doc/$PRGNAM-$VERSION ||
-make docdir=/usr/doc/$PRGNAM-$VERSION
+make docdir=/usr/doc/$PRGNAM-$VERSION ||
+  make -j1 V=1 docdir=/usr/doc/$PRGNAM-$VERSION
 make install docdir=/usr/doc/$PRGNAM-$VERSION DESTDIR=$PKG
 
 rm -f $PKG/usr/lib*/*.la

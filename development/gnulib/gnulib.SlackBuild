@@ -54,8 +54,8 @@ find . \( -name '.git*' -o -name '.cvs*' \) -print0 | xargs -0 rm -rf
 # does the same as Debian's 02-shebang.patch
 sed -i '1s,#!/usr/local/bin,#!/usr/bin,' lib/uniname/gen-uninames.lisp
 
-make -j$(($(nproc)+1)) -C doc info || make -C doc info
-make -j$(($(nproc)+1)) -C doc html || make -C doc html
+make -C doc info || make -j1 -C doc V=1 info
+make -C doc html || make -j1 -C doc V=1 html
 
 # Debian does this, is it really necessary?
 chmod 755 tests/*.in.sh lib/config.charset

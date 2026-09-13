@@ -91,7 +91,7 @@ cd build
     -DGLFW_BUILD_EXAMPLES=OFF \
     -DGLFW_BUILD_DOCS=OFF \
     -DCMAKE_BUILD_TYPE=Release ..
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   make install DESTDIR=$PKG
 cd ..
 

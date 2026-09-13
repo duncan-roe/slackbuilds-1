@@ -99,7 +99,7 @@ CXXFLAGS="$SLKCFLAGS -D_GNU_SOURCE" \
   --enable-rplayd-user=$RPLAYER \
   --enable-rplayd-group=$RPLAYER
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 # Remove the static library.  There is no configure option to suppress the

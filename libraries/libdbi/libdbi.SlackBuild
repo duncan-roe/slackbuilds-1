@@ -89,8 +89,8 @@ CFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux \
   || exit 1
 
-make -j$(($(nproc)+1)) docdir=/usr/doc/$PRGNAM-$VERSION ||
-make docdir=/usr/doc/$PRGNAM-$VERSION || exit 1
+make docdir=/usr/doc/$PRGNAM-$VERSION ||
+  make -j1 V=1 docdir=/usr/doc/$PRGNAM-$VERSION || exit 1
 make docdir=/usr/doc/$PRGNAM-$VERSION install-strip DESTDIR=$PKG || exit 1
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION

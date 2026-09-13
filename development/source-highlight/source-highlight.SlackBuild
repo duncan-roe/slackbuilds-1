@@ -93,7 +93,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-shared \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 # Add YAML and Markdown support (upstream bug #62751)

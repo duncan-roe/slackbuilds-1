@@ -91,7 +91,7 @@ sed "s|@CFLAGS@|$SLKCFLAGS|" $CWD/configure.patch | patch -p1
   --mandir /usr/man \
   --disable-force-safe-string
 
-make -j$(($(nproc)+1)) world.opt || make world.opt
+make world.opt || make -j1 V=1 world.opt
 make DESTDIR=$PKG install
 gzip -9 $PKG/usr/man/man*/*
 

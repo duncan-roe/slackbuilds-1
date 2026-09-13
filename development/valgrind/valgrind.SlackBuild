@@ -91,7 +91,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 # Do NOT strip the shared objects, as recommended by the developers.

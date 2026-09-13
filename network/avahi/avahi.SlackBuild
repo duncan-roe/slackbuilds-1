@@ -140,7 +140,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --program-suffix= \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 # 20220414 bkw: if this dir is empty, it doesn't need to be included

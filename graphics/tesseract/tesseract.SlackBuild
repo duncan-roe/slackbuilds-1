@@ -112,7 +112,7 @@ CFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 make training
 make training-install DESTDIR=$PKG

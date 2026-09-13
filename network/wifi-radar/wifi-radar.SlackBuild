@@ -69,7 +69,7 @@ patch --verbose -p1 < $CWD/dhcpcd.diff
 patch --verbose -p1 < $CWD/kdesu.diff
 
 # It's python so no SLKCFLAGS
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install \
 	DESTDIR=$PKG/usr \
 	sbindir=$PKG/usr/bin \

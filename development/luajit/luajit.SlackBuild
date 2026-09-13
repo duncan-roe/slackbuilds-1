@@ -98,22 +98,22 @@ PKGDOC=$PKG/usr/doc/$PRGNAM-$VERSION
 runmake() {
   CFLAGS="$SLKCFLAGS" \
   CXXFLAGS="$SLKCFLAGS" \
-  make -j$(($(nproc)+1)) $1 \
-    Q=  \
-    DESTDIR=$2 \
-    PREFIX=/usr \
-    MULTILIB=$LIB \
-    INSTALL_LIB=$2/$USRLIB \
-    INSTALL_MAN=$2/$MAN1 ||
-  CFLAGS="$SLKCFLAGS" \
-  CXXFLAGS="$SLKCFLAGS" \
   make $1 \
     Q=  \
     DESTDIR=$2 \
     PREFIX=/usr \
     MULTILIB=$LIB \
     INSTALL_LIB=$2/$USRLIB \
-    INSTALL_MAN=$2/$MAN1
+    INSTALL_MAN=$2/$MAN1 ||
+    CFLAGS="$SLKCFLAGS" \
+    CXXFLAGS="$SLKCFLAGS" \
+    make -j1 V=1 $1 \
+      Q=  \
+      DESTDIR=$2 \
+      PREFIX=/usr \
+      MULTILIB=$LIB \
+      INSTALL_LIB=$2/$USRLIB \
+      INSTALL_MAN=$2/$MAN1
 }
 
 runmake

@@ -90,10 +90,10 @@ mkdir -p $PKG/$SAGEROOT $PKG/usr/share/{applications,pixmaps} \
 LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}" \
        ./configure \
        --enable-build-as-root
-make -j$(($(nproc)+1)) build
+make build
 
 # test all examples in the documentation (over 93,000 line of input)
-[ "${TEST:-no}" = "yes" ] && make -j$(($(nproc)+1)) test
+[ "${TEST:-no}" = "yes" ] && make test
 
 # build the pdf version of the documentation
 # (Note: this requires a LaTeX installation)

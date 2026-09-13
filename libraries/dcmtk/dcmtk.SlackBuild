@@ -96,7 +96,7 @@ cd build
     -DBUILD_SHARED_LIBS=ON \
     -DDCMTK_ENABLE_CXX11=ON \
     -DCMAKE_BUILD_TYPE=Release ..
-  make -j$(($(nproc)+1)) || make
+  make || make -j1 V=1
   make install/strip DESTDIR=$PKG
 cd ..
 

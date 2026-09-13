@@ -107,7 +107,7 @@ runmake ()
   CFLAGS="$SLKCFLAGS" \
         CXXFLAGS="$SLKCFLAGS" \
         ./configure "${args[@]}"
-  make -j $(($(nproc)+1)) build || make build
+  make build || make -j1 V=1 build
   make install DESTDIR=$PKG
 )
 

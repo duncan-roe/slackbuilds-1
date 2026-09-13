@@ -75,7 +75,7 @@ ln -sv lib$PRGNAM.so.$VERSION source/lib$PRGNAM.so
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS -I../source" \
 LDFLAGS+=" -L../source" \
-make -j$(($(nproc)+1)) -C apps || make -C apps
+make -C apps || make -C -j1 V=1 apps
 make -C source install DESTDIR=$PKG PREFIX=/usr SUFFIX="$LIBDIRSUFFIX"
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

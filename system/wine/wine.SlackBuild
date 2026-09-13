@@ -145,8 +145,8 @@ if [ "$WINE64" = "yes" ]; then
      --program-suffix= \
      --disable-tests \
      --build=$BUILD_ARCH
-  make -j$(($(nproc)+1)) depend || make depend
-  make -j$(($(nproc)+1)) || make
+  make depend || make -j1 V=1 depend
+  make || make -j1 V=1
   make install DESTDIR=$PKG
   cd ..
 fi
@@ -173,8 +173,8 @@ if [ "$WINE32" = "yes" ]; then
      --program-suffix=testsuf32 \
      --disable-tests \
      --build=$BUILD_ARCH
-  make -j$(($(nproc)+1)) depend || make depend
-  make -j$(($(nproc)+1)) || make
+  make depend || make -j1 V=1 depend
+  make || make -j1 V=1
   make install DESTDIR=$PKG
   cd ..
 fi

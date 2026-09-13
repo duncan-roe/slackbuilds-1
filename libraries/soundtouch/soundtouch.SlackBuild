@@ -93,10 +93,10 @@ CXXFLAGS="$SLKCFLAGS" \
   --localstatedir=/var \
   --build=$ARCH-slackware-linux
 
-make -j$(($(nproc)+1)) \
-  pkgdocdir="/usr/doc/$PRGNAM-$VERSION" ||
 make \
-  pkgdocdir="/usr/doc/$PRGNAM-$VERSION"
+  pkgdocdir="/usr/doc/$PRGNAM-$VERSION" ||
+  make -j1 V=1 \
+    pkgdocdir="/usr/doc/$PRGNAM-$VERSION"
 
 make install \
   pkgdocdir="/usr/doc/$PRGNAM-$VERSION" \

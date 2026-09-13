@@ -68,7 +68,7 @@ find -L . \
   --mandir=/usr/man \
   --infodir=/usr/info
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install-strip DESTDIR=$PKG
 
 gzip -9 $PKG/usr/man/man*/*

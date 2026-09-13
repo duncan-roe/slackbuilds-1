@@ -105,7 +105,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-package-origin='http://gstreamer.freedesktop.org' \
   --build=$ARCH-slackware-linux || exit 1
 
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 make install DESTDIR=$PKG
 
 rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/*.la

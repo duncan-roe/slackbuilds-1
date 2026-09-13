@@ -80,7 +80,7 @@ sed -i 's|lua5\.4/||g' *.c *.h
 # Use system libraries for pcre2/lua, keep bundled uthash (header-only)
 CFLAGS="$SLKCFLAGS -Ivendor/uthash" \
 CXXFLAGS="$SLKCFLAGS" \
-make -j$(($(nproc)+1)) || make -j1 V=1
+make || make -j1 V=1
 make install DESTDIR=$PKG prefix=/usr
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \

@@ -89,7 +89,7 @@ find -L . \
 cat $CWD/hostapd.defconfig > .config
 
 export CFLAGS+="$SLKCFLAGS"
-make -j$(($(nproc)+1)) || make
+make || make -j1 V=1
 
 mkdir -p \
   $PKG/usr/sbin/ \
