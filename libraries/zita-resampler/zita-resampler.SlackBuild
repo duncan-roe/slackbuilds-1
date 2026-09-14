@@ -70,7 +70,7 @@ if [ "$ARCH" = "i586" ] || [ "$ARCH" = "i686" ]; then
   sed -e '/^CPPFLAGS += -DENABLE_SSE2/d' -i source/Makefile
 fi
 
-make -j$(($(nproc)+1)) -C source || make -C source
+make -C source || make -j1 -C source V=1
 ln -sv lib$PRGNAM.so.$VERSION source/lib$PRGNAM.so
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS -I../source" \
