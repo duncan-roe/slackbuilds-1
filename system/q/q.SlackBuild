@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for q
 
 # Copyright 2026 Duncan Roe, Melbourne, Australia
