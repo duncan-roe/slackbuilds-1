@@ -145,7 +145,7 @@ fi
 if [[ $CGO_MINOR_VERSION -lt 20 ]] ; then
   mkdir -p $TMP $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION2} $OUTPUT
   cd $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION2}
-  tar xvf $CWD/go${BOOTSTRAP_VERSION2}.src.tar.gz
+  tar xf $CWD/go${BOOTSTRAP_VERSION2}.src.tar.gz
   cd go
   chown -R root:root .
   find -L . \
@@ -214,7 +214,7 @@ fi
 if [[ $CGO_MINOR_VERSION -lt 22 ]] ; then
   mkdir -p $TMP $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION3} $OUTPUT
   cd $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION3}
-  tar xvf $CWD/go${BOOTSTRAP_VERSION3}.src.tar.gz
+  tar xf $CWD/go${BOOTSTRAP_VERSION3}.src.tar.gz
   cd go
   chown -R root:root .
   find -L . \
@@ -283,7 +283,7 @@ fi
 if [[ $CGO_MINOR_VERSION -lt 24 ]] ; then
   mkdir -p $TMP $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION4} $OUTPUT
   cd $PKG/usr/lib${LIBDIRSUFFIX}/go${BOOTSTRAP_VERSION4}
-  tar xvf $CWD/go${BOOTSTRAP_VERSION4}.src.tar.gz
+  tar xf $CWD/go${BOOTSTRAP_VERSION4}.src.tar.gz
   cd go
   chown -R root:root .
   find -L . \
