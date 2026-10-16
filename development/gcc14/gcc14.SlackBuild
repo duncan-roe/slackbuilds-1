@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Slackware build script for gcc14
 
 # Copyright 2026 Christoph Willing  Sydney, Australia
