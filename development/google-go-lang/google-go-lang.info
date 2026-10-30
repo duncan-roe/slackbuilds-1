@@ -1,12 +1,12 @@
 PRGNAM="google-go-lang"
-VERSION="1.27.1"
+VERSION="1.27.3"
 HOMEPAGE="http://golang.org"
-DOWNLOAD="https://go.dev/dl/go1.27.1.src.tar.gz \
+DOWNLOAD="https://go.dev/dl/go1.27.3.src.tar.gz \
           https://go.dev/dl/go1.25.14.src.tar.gz \
           https://go.dev/dl/go1.23.12.src.tar.gz \
           https://go.dev/dl/go1.21.13.src.tar.gz \
           https://go.dev/dl/go1.19.13.src.tar.gz"
-MD5SUM="0e86758aeea9130020f2c4c895835914 \
+MD5SUM="2a51ceb3c3a369b8c0a61586e0e70581 \
         98bbebac77a3b1ff47f34a4fde02c067 \
         8b26bb57dd624c3dbddf32c43359bb3d \
         3454362fc56df5020920e43fee2776ab \
