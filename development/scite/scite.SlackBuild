@@ -2,7 +2,7 @@
 
 # Slackware build script for SciTE
 
-# Ryan P.C. McQuen | Everett, WA | ryanpcmcquen@member.fsf.org
+# Ryan P.C. McQuen | Everett, WA
 # 2017 | Dhaby Xiloj | slack.dhabyx@gmail.com
 # 2024 | rc_05 | contact@rc-05.com
 
@@ -30,7 +30,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=scite
-VERSION=${VERSION:-5.6.2}
+VERSION=${VERSION:-5.6.8}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}

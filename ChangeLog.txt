@@ -1,3 +1,801 @@
+Sat Nov  7 02:12:22 UTC 2026
+academic/Gridcoin-Research: Updated Readme
+academic/MetaPhlAn2: Mark as 64-bit only.
+academic/PhyML: Mark as 64-bit only.
+academic/RAxML: Mark as 64-bit only.
+academic/bcftools: Updated to version 1.25
+academic/bibus: Email removed (Request by maintainer).
+academic/calc: Updated for version 2.17.0.2
+academic/extrema: Email removed (Request by maintainer).
+academic/fastqc: Updated for version 0.13.0
+academic/free42: Updated for version 3.5.1
+academic/glpk: Email removed (Request by maintainer).
+academic/hyphy: Mark as 64-bit only.
+academic/lammps: Marked as x86_64 only
+academic/locarna: Set to 64-bit only in locarna.info
+academic/meme-suite: Mark as 64-bit only.
+academic/ngspice-wave: Updated for version 0.1.3.
+academic/plus42: Updated for version 1.5.1
+academic/pysam: Updated for version 0.24.1
+academic/qhull: Email removed (Request by maintainer).
+academic/samtools: Updated for version 1.25
+academic/seaview: Mark as 64-bit only.
+audio/bluplay: Updated for version 0.3.0.
+audio/carla: Update README (pyliblo => python3-pyliblo2).
+audio/clementine: Revert back to 1.4.1 to not require qt6
+audio/drumkv1: Updated for version 1.5.1.
+audio/gtklick: Update dependencies (pyliblo => python2-pyliblo).
+audio/mac: Updated for version 13.45.
+audio/mididings: Update dependencies (pyliblo => python3-pyliblo).
+audio/ngjackspa: Use wget-friendly download.
+audio/padthv1: Updated for version 1.5.1.
+audio/patchage: Email removed (Request by maintainer).
+audio/reaper: Updated for version 7.85
+audio/samplv1: Updated for version 1.5.1.
+audio/synthv1: Updated for version 1.5.1.
+audio/tagtool: Email removed (Request by maintainer).
+audio/vamp-plugin-sdk: Email removed (Request by maintainer).
+audio/xmp: Updated for version 4.3.1, new maintainer.
+desktop/ClamAV-GUI: Marked as x86_64 only
+desktop/cellwriter: Email removed (Request by maintainer).
+desktop/cinnamon-desktop: Updated for version 6.8.0
+desktop/dwm: Email removed (Request by maintainer).
+desktop/enlightenment: Email removed (Request by maintainer).
+desktop/fedora-wallpapers: Added (New wallpaper).
+desktop/gmrun: Email removed (Request by maintainer).
+desktop/gtk-engines: Email removed (Request by maintainer).
+desktop/insync-thunar: Mark as 64-bit only.
+desktop/lumina: Email removed (Request by maintainer).
+desktop/ratpoison: Email removed (Request by maintainer).
+desktop/superkey-launch: Email removed (Request by maintainer).
+desktop/wmpulsemixer: Updated for version 0.2.2
+desktop/x-tile: Email removed (Request by maintainer).
+desktop/yaru-icon-theme: Updated for version 26.10.3
+development/Kiro: Updated for version 1.4.121.
+development/Kiro: Updated for version 1.4.86.
+development/alire: Updated for version 2.1.1
+development/antigravity-cli: Updated for version 1.4.12
+development/antigravity: Updated for version 2.28.2
+development/aws-cdk: Updated for version 2.1148.0.
+development/bfg: Email removed (Request by maintainer).
+development/bigloo: Email removed (Request by maintainer).
+development/bluefish: Email removed (Request by maintainer).
+development/cpan2tgz: Updated for version 20261102_ccb86bd
+development/cudatoolkit_13: Updated for version 13.5.0
+development/d-tools: Updated for version 2.114.0
+development/dmd: Updated for version 2.114.0
+development/dub: Updated for version 1.43.0
+development/ebe: Email removed (Request by maintainer).
+development/electron-bin: Updated for version 45.2.2
+development/enki: Email removed (Request by maintainer).
+development/gauche: Email removed (Request by maintainer).
+development/gcli: Updated for version 2.14.0.
+development/geany-plugins: Email removed (Request by maintainer).
+development/geany: Email removed (Request by maintainer).
+development/gisto: Email removed (Request by maintainer).
+development/gitnuro: Updated for version 2.1.0
+development/go-size-analyzer: Added (Go Analyzer).
+development/gosec: Added (Go source security analyser).
+development/gtkextra: Email removed (Request by maintainer).
+development/heroku-cli: Updated for version 11.12.1.
+development/hexedit: Email removed (Request by maintainer).
+development/jsmin: Email removed (Request by maintainer).
+development/kube-score: Added (Kubernetes manifest analyzer).
+development/letos: Updated for version 4.0.4
+development/lighttable: Email removed (Request by maintainer).
+development/medit: Email removed (Request by maintainer).
+development/mit-scheme: Email removed (Request by maintainer).
+development/ninja-ide: Email removed (Request by maintainer).
+development/nodejs22: Email removed (Request by maintainer).
+development/notepad++: Updated for version 8.9.9
+development/pycharm: Updated for version 2026.2.4
+development/quilt: Email removed (Request by maintainer).
+development/scite: Email removed (Request by maintainer).
+development/scite: Updated for version 5.6.8.
+development/shfmt: Added (Shell parser, formatter, and interpreter).
+development/smalltalk: Email removed (Request by maintainer).
+development/spin: Email removed (Request by maintainer).
+development/sqlitebrowser: Email removed (Request by maintainer).
+development/src-vcs: Email removed (Request by maintainer).
+development/textadept: Email removed (Request by maintainer).
+development/uemacs: Email removed (Request by maintainer).
+development/vscode-bin: Updated for version 1.145.1.
+development/vscodium: Updated for version 1.143.17232.
+development/xasm: Updated for version 3.3.0.
+development/xxd-standalone: Add README note about versions.
+development/zizmor: Updated for version 1.32.0.
+development/zulu-openjdk17: Updated for version 17.0.21.0.3.
+development/zulu-openjdk21: Updated for version 21.0.13.0.3.
+development/zulu-openjdk25: Updated for version 25.0.5.0.3.
+games/VASSAL: Updated for version 3.8.0
+games/alienarena: Version bump to 7.72.4
+games/freeciv: Email removed (Request by maintainer).
+games/gbrainy: Email removed (Request by maintainer).
+games/lutris: Email removed (Request by maintainer).
+games/nsudoku: Email removed (Request by maintainer).
+games/openmsx: Updated for version 22.0
+games/pysolfc: Updated for version 3.7.0.
+games/sameboy: Updated for version 1.0.5.
+games/simsu: Email removed (Request by maintainer).
+games/supertuxkart: Email removed (Request by maintainer).
+gis/TauDEM: Mark as 64-bit only.
+graphics/Blender: Updated for version 5.2.3
+graphics/blender: Email removed (Request by maintainer).
+graphics/brlcad: Email removed (Request by maintainer).
+graphics/evolus-pencil: Email removed (Request by maintainer).
+graphics/mirage: Email removed (Request by maintainer).
+graphics/pencil3: Removed (Use pencil).
+graphics/pngquant: Email removed (Request by maintainer).
+graphics/renderdoc: Updated for version 1.24
+graphics/scrot: Email removed (Request by maintainer).
+graphics/ueberzugpp: Updated for version 2.9.11.
+graphics/zbar: Updated for version 0.23.95.
+ham/lpcnetfreedv: use local lpcnet191005
+ham/qlog: Updated for version 0.54.2.
+libraries/GtkD: Mark as 64-bit only.
+libraries/MDI_Library: Marked as x86_64 only
+libraries/SDL3: Updated for version 3.4.20
+libraries/SDL_gfx: Email removed (Request by maintainer).
+libraries/afflib: Updated for version 3.7.23.
+libraries/ahven: Updated for version 2.9
+libraries/allegro: Email removed (Request by maintainer).
+libraries/daq: Updated for version 3.0.29.
+libraries/dbcsr: Mark as 64-bit only.
+libraries/fzssh: Updated for version 1.5.1.
+libraries/ganv: Email removed (Request by maintainer).
+libraries/giblib: Email removed (Request by maintainer).
+libraries/gloox: Email removed (Request by maintainer).
+libraries/htslib: Updated for version 1.25
+libraries/imlib2: Email removed (Request by maintainer).
+libraries/libROM: Mark as 64-bit only.
+libraries/libcamera: Updated for version 0.8.0
+libraries/libdispatch: Updated for version 6.4.2.
+libraries/libmediainfo: Email removed (Request by maintainer).
+libraries/libopenshot-audio: Updated for version 1.0.2
+libraries/libopenshot: Updated for version 1.1.0
+libraries/libtar: Email removed (Request by maintainer).
+libraries/libversion: Updated for version 3.0.5.
+libraries/libxmp: Updated for version 4.7.4, new maintainer.
+libraries/libzen: Email removed (Request by maintainer).
+libraries/parsec: Mark as 64-bit only.
+libraries/php-oci8: Mark as 64-bit only.
+libraries/qt6: Updated for version 6.8.5.
+libraries/qutepart: Email removed (Request by maintainer).
+libraries/rabbitmq-c: Updated for version 0.18.1
+libraries/scalapack: Mark as 64-bit only.
+libraries/stormlib: Updated for version 9.40.
+libraries/ucl: Email removed (Request by maintainer).
+libraries/unixODBC: Updated for version 2.3.14.
+libraries/uriparser: Updated for version 1.0.3.
+misc/SecLists: Updated for version 2026.2.
+misc/asterixInspector: Email removed (Request by maintainer).
+misc/dmg2img: Email removed (Request by maintainer).
+misc/exploitdb: Updated for version 2026_10_27.
+misc/gcp: Email removed (Request by maintainer).
+misc/ollama: Updated for version 0.40.15.
+misc/recode: Email removed (Request by maintainer).
+misc/stardict: Email removed (Request by maintainer).
+misc/yubioath-desktop: Updated for version 7.5.0.
+multimedia/MuseScore: Updated for version 4.7.6
+multimedia/devedeng: Updated script
+multimedia/exaile: Email removed (Request by maintainer).
+multimedia/freetube: Updated for version 0.26.0.
+multimedia/gmtp: Email removed (Request by maintainer).
+multimedia/inputstream.adaptive: Version bump to 21.5.26
+multimedia/mediainfo: Email removed (Request by maintainer).
+multimedia/munt: Updated for version 2.8.3.
+multimedia/openshot: Updated for version 4.1.0
+multimedia/pipe-viewer: Updated for version 0.5.9.
+multimedia/pitivi: Email removed (Request by maintainer).
+multimedia/spotify: Email removed (Request by maintainer).
+multimedia/spotify: Fix post-installation script.
+multimedia/strawberry: Mark as 64-bit only.
+network/AdGuardHome: Updated for version 0.107.80.
+network/Electrum-bin: Set APPIMAGE variable in extracted AppRun.
+network/LOIC: Email removed (Request by maintainer).
+network/brave-browser: update to 1.99.55
+network/brave-origin: update to 1.99.55
+network/cloudflared-bin: Updated for version 2026.10.7.
+network/conkeror: Removed (orphaned and download is broken).
+network/discord: Version bump to 1.0.168
+network/elinks: Use wget-friendly download.
+network/etherape: Email removed (Request by maintainer).
+network/franz: Updated for version 6.11.0.
+network/gallery-dl: Updated for version 1.32.19
+network/geoipupdate: Updated for version 8.0.0
+network/helium-browser: Updated for version 0.20.3.1
+network/ip2location-c: Email removed (Request by maintainer).
+network/ipv6calc: Email removed (Request by maintainer).
+network/librewolf: Updated for version 159.0.1_1
+network/metasploit-framework-bin: Updated for version 6.5.9.
+network/mitmproxy-bin: Add no-upgrade note.
+network/onedrive: Updated for version 2.5.12
+network/opera: Updated for version 139.0.6053.22
+network/rtorrent: Updated for version 0.16.27.
+network/signal-desktop: Updated for version 8.34.0.
+network/slack: Email removed (Request by maintainer).
+network/sopcast-player: Removed (never updated since 2011).
+network/sopcast: Removed (never updated since 2010).
+network/squid: Updated for version 7.8.
+network/tailscale: update to 1.104.5
+network/teams-for-linux: Updated for version 2.28.0.
+network/telegram: Updated for version 7.4.0.
+network/telegram: Updated for version 7.4.1.
+network/vivaldi: Updated for version 8.3.4191.30.
+network/vnstat: Updated for version 2.14.
+network/weechat: Updated for version 4.10.2.
+network/zen-browser: Updated for version 1.24b
+network/zoom-linux: Updated for version 7.2.5.6661
+office/ProjectLibre: Mark it as x86_64.
+office/cups-pdf: Updated for version 3.0.3
+office/ledger-live: Updated for version 4.26.0
+office/libreoffice: Fix accident changes.
+office/mdp: Email removed (Request by maintainer).
+office/mupdf: Updated for version 1.28.6.
+office/openoffice.org: Email removed (Request by maintainer).
+office/pdfsam-basic: Updated for version 6.0.10
+office/qownnotes: Updated for version 26.11.5.
+office/sigil: Updated for version 2.8.5
+office/xpad: Email removed (Request by maintainer).
+office/zathura: Fix man page generation.
+office/zettlr: Updated for version 4.9.0.
+perl/perl-Exporter-Tiny: Updated for version 1.006003.
+perl/perl-Net-Works: Mark as 64-bit only.
+perl/perl-Perl-Critic: Use perl-Tidy in REQUIRES.
+perl/perl-Perl-Tidy: Removed (duplicate of perl-Tidy).
+perl/perl-Type-Tiny: Added (Built-in types bundle for Type::Tiny)
+python/pyliblo: Removed (split into python2- and python3-).
+python/python2-nuitka: Updated for version 4.3.4
+python/python2-pyliblo: Added (Replaces old pyliblo for python 2).
+python/python3-caldav: Downgrade to 2.2.6 due to python3.10 req
+python/python3-nuitka: Updated for version 4.3.4
+python/python3-pyliblo: Added (Replaces old pyliblo for python 3)
+python/python3-sentry_sdk: Updated for version 2.74.0
+python/python3-setuptools-gettext: Removed (maintainer request)
+python/python3-socks: Updated for version 3.2.1.
+python/python3-watchdog: Updated README
+python/subuser: Mark as 64-bit only.
+python/uv-bin: Updated for version 0.13.7.
+system/betty: Email removed (Request by maintainer).
+system/bfs: Updated for version 4.1.6
+system/blocaled: Updated for version 0.7.
+system/burp: Email removed (Request by maintainer).
+system/cdw: Email removed (Request by maintainer).
+system/clifm: Updated for verion 1.29.
+system/conky: Updated for version 1.26.0.
+system/davfs2: Email removed (Request by maintainer).
+system/distrobox: Mark it as x86_64.
+system/dosbox-dev: Email removed (Request by maintainer).
+system/dosbox: Email removed (Request by maintainer).
+system/doublecmd-qt5: Updated for version 1.2.10
+system/dump: Email removed (Request by maintainer).
+system/dust: Updated for version 1.2.7.
+system/file-roller: Email removed (Request by maintainer).
+system/firejail: Updated for version 0.9.82.2.
+system/fnt: updated to version 1.9.2
+system/fonts-geist: update to 1.9.2
+system/google-droid-fonts: Email removed (Request by maintainer).
+system/incus-ui: Updated for version 20261102_d380b8fd
+system/incus: Updated for version 7.6
+system/jenkins: Updated for version 2.580.2.
+system/linux-libertine-fonts: Email removed (Request by maintainer).
+system/mediaextract: Updated for version 1.2.2.
+system/mongo-tools: Updated for version 100.20.1.
+system/munin-node: Updated script.
+system/nemo-fileroller: Updated for version 6.8.0
+system/nemo: Updated for version 6.8.1
+system/netdata: Updated for version 2.12.3.
+system/nvidia-driver: Updated for version 620.70.06.
+system/nvidia-kernel: Updated for version 620.70.06.
+system/nvidia-legacy390-driver: Avoid spaces on filenames.
+system/rewise: Updated for version 0.4.0
+system/spacefm: Email removed (Request by maintainer).
+system/tagainijisho: Fix build on -current.
+system/tarlz: Updated for version 0.32.2.
+system/tilda: Email removed (Request by maintainer).
+system/ttf-jigmo: Added (New font).
+system/ttf-ubuntu-font-family: Email removed.
+system/unipicker: Added (Unicode character chooser).
+system/vlock: Email removed (Request by maintainer).
+system/winetricks: Email removed (Request by maintainer).
+system/zzzfm: Email removed (Request by maintainer).
++--------------------------+
+Sat Oct 31 01:33:50 UTC 2026
+academic/Isabelle: Update maintainer email.
+academic/acl2: Update maintainer email.
+academic/booktab: Removed (Maintainer's request).
+academic/cadabra2: Update maintainer email.
+academic/free42: Updated for version 3.4.1
+academic/gdstk: Update maintainer email.
+academic/gelemental: Update maintainer email.
+academic/gephi: Update maintainer email.
+academic/hdfview: Update maintainer email.
+academic/papi: Update maintainer email.
+academic/plus42: Updated for version 1.4.1
+academic/pspp: Updated for version 2.1.3.
+academic/qhull: Update maintainer email.
+academic/rpy2: Updated for version 3_6_9
+academic/scmutils: Update maintainer email.
+academic/wxMaxima: Update maintainer email.
+accessibility/mbrola-voices: Update maintainer email.
+audio/asap: Updated for version 8.0.1.
+audio/bluplay: Added (Terminal music player for BluOS streamers).
+audio/clementine: Version bump to 1.4.3
+audio/reaper: Updated for version 7.84
+business/exercism_repack: Update maintainer email.
+desktop/SysTray-X: Removed upper version bound patch
+desktop/TextSnatcher: Update maintainer email.
+desktop/byzanz: Update maintainer email.
+desktop/docfetcher: Update maintainer email.
+desktop/domterm: Update maintainer email.
+desktop/dpscreenocr: Update maintainer email.
+desktop/i3-easyfocus: Update maintainer email.
+desktop/i3ipc-glib: Update maintainer email.
+desktop/nwg-displays: Updated for version 0.5.0.
+desktop/nwg-look: Updated for version 1.2.1.
+desktop/rclone-browser: Update maintainer email.
+desktop/standard-notes-bin: Updated for version 3.202.11
+desktop/vinagre: Update maintainer email.
+desktop/wmpulsemixer: Added (Volume control dockapp).
+desktop/xapp-symbolic-icons: Updated for version 1.1.1
+desktop/xfce4-i3-workspaces-plugin: Update maintainer email.
+desktop/xpra: Update maintainer email.
+development/CImg: Update maintainer email.
+development/ChezScheme: Update maintainer email.
+development/HeidiSQL: Updated for version 12.22.
+development/Kiro: Updated for version 1.4.62.
+development/amazon-corretto: Updated for version 17.0.21.0.10.
+development/android-studio-for-platform: Update maintainer email.
+development/android-studio: Update maintainer email.
+development/antigravity-cli: Updated for version 1.4.9
+development/antigravity-ide: Updated for version 2.6.0
+development/antigravity: Updated for version 2.26.0
+development/apache-ant: Updated for version 1.10.18.
+development/astyle: Updated for version 3.6.20.
+development/aws-cdk: Updated for version 2.1146.1.
+development/bbe: Update maintainer email.
+development/bcc: Update maintainer email.
+development/bpftrace: Update maintainer email.
+development/cmake-opt: Update maintainer email.
+development/composer: Updated for version 2.11.1
+development/cpan2tgz: Updated for version 0.6.9
+development/dbmate: Added (Database migration tool).
+development/ddisasm: Update maintainer email.
+development/deno: README update.
+development/eclipse-rcp: Update maintainer email.
+development/electron-bin: Updated for version 45.1.0
+development/emsdk: Update maintainer email.
+development/gambit: Update maintainer email.
+development/gerbil: Update maintainer email.
+development/github-cli: Updated for version 2.103.2
+development/gitnuro: Updated for version 2.0.0
+development/got: update to 0.130.1
+development/govulncheck: Added (Go vulnerability scanner).
+development/grype: Updated for version 0.121.0.
+development/guile1.8: Update maintainer email.
+development/ispc: Update maintainer email.
+development/jdk19: Update README.
+development/jdk23: Update README.
+development/jdk: Updated for version 8u511.
+development/jupyter-notebook: Updated for version 7.5.8
+development/just: Updated for version 1.59.0.
+development/kawa.bin: Update maintainer email.
+development/lean-elan: Update maintainer email.
+development/lefthook: Updated for version 2.2.2
+development/lfe: Update maintainer email.
+development/mise: Added (Version & task manager).
+development/mit-scheme: Update maintainer email.
+development/mongodb-compass: Updated for version 1.53.2.
+development/mongodb-shell: Updated for version 2.14.1.
+development/nodeenv: Update maintainer email.
+development/openmodelica: Update maintainer email.
+development/perf: Update maintainer email.
+development/polyml: Update maintainer email.
+development/python3-hylang: Update maintainer email.
+development/python3-hyrule: Update maintainer email.
+development/racket: Update maintainer email.
+development/serie: Added (Git history browser).
+development/souffle: Update maintainer email.
+development/sourcegit: Updated for version 2026.23
+development/srcML: Updated for version 1.2.0.
+development/stklos: Update maintainer email.
+development/syft: Updated for version 1.55.0.
+development/systemtap: Update maintainer email.
+development/tflint: Updated for version 0.65.0.
+development/valgrind: Updated for version 3.28.0.
+development/vasm: Fix homepage.
+development/vscode-bin: Updated for version 1.144.0.
+development/zulu-openjdk11: Updated for version 11.0.33.
+development/zulu-openjdk17: Updated for version 17.0.21.
+development/zulu-openjdk21: Updated for version 21.0.13.
+development/zulu-openjdk25: Updated for version 25.0.5.
+development/zulu-openjdk8: Updated for version 8.0.512.
+games/fceux: Updated for version 2.7.0.
+games/openarena: Update maintainer email.
+games/quake3_shareware_data: Update maintainer email.
+games/robotfindskitten: Update maintainer email.
+games/scummvm: Updated for version 2026.4.0
+games/zsnes: Fix download.
+gis/foxtrotgps: Remove GConf cruft.
+gis/gmapcatcher: Update maintainer email.
+gis/shapelib: Update maintainer email.
+graphics/dcraw: Update maintainer email.
+graphics/djview4: Update maintainer email.
+graphics/gimagereader: Update maintainer email.
+graphics/glmark2: Update maintainer email.
+graphics/gpaint: Update maintainer email.
+graphics/img2pdf: Update maintainer email.
+graphics/klayout: Update maintainer email.
+graphics/mtpaint: Update maintainer email.
+graphics/openclipart: Update maintainer email.
+graphics/pdfsyntax: Update maintainer email.
+graphics/pencil: Added (Renamed from pencil3).
+graphics/posterazor: Update maintainer email.
+graphics/python3-gds3xtrude: Update maintainer email.
+graphics/renderdoc: Updated for version 1.23
+graphics/shutter: Compress man page.
+graphics/tikzit: Update maintainer email.
+graphics/ufraw: Update maintainer email.
+graphics/weasis-bin: Update maintainer email.
+graphics/white_dune: Update maintainer email.
+graphics/xloadimage: Update maintainer email.
+graphics/zgrviewer: Update maintainer email.
+ham/cm256cc: Update script.
+ham/dab_lib: Removed (No longer needed).
+ham/qlog: Updated for version 0.54.1.
+ham/satdump: Updated for version 2.0.0.
+ham/sdrangel: Updated for version 8.0.0.
+ham/tqsl: Updated for version 2.8.7.
+haskell/cabal-install: Update maintainer email.
+haskell/ghcup: Update maintainer email.
+haskell/haskell-lukko: Update maintainer email.
+libraries/c-blosc: Update maintainer email.
+libraries/ceres-solver: Update maintainer email.
+libraries/cglm: Updated for version 0.9.7.
+libraries/coeurl: Update maintainer email.
+libraries/cuneiform: Update maintainer email.
+libraries/cyrus-timezones: Update maintainer email.
+libraries/dpdk: Update maintainer email.
+libraries/duktape: Update maintainer email.
+libraries/field3d: Update maintainer email.
+libraries/flint: Updated for version 3.6.0.
+libraries/fzssh: Updated for version 1.5.0.
+libraries/glog: Update maintainer email.
+libraries/googlebenchmark: Update maintainer email.
+libraries/gperftools: Update maintainer email.
+libraries/granite: Update maintainer email.
+libraries/gss-ntlmssp: Updated for version 1.3.2.
+libraries/gtk3-nocsd: Update maintainer email.
+libraries/gtkimageview: Update maintainer email.
+libraries/hdf: Update maintainer email.
+libraries/kaidan: Update maintainer email.
+libraries/kquickimageeditor: Update maintainer email.
+libraries/lib3ds: Update maintainer email.
+libraries/libacars: Added (ACARS decoding library).
+libraries/libbpf: Update maintainer email.
+libraries/libfaketime: Updated for version 0.9.13.
+libraries/libfilezilla: Updated for version 0.58.0.
+libraries/libgdsii: Update maintainer email.
+libraries/libgrss: Update maintainer email.
+libraries/libical4-opt: Update maintainer email.
+libraries/libilbc: Update maintainer email.
+libraries/libnids: Update maintainer email.
+libraries/libomemo-c: Update maintainer email.
+libraries/librdkafka: Updated for version 2.16.0
+libraries/libspng: Update maintainer email.
+libraries/libsrs2: Update maintainer email.
+libraries/libsrtp2: Update maintainer email.
+libraries/libwebsockets: Update maintainer email.
+libraries/lttng-ust: Updated for version 2.16.0
+libraries/luaunbound: Update maintainer email.
+libraries/mtxclient: Update maintainer email.
+libraries/nDPI: Update maintainer email.
+libraries/nghttp3: Update maintainer email.
+libraries/ngtcp2: Update maintainer email.
+libraries/ogre: Update maintainer email.
+libraries/olm: Update maintainer email.
+libraries/openimagedenoise: Update maintainer email.
+libraries/openvdb: Update maintainer email.
+libraries/openvkl: Update maintainer email.
+libraries/ospray: Update maintainer email.
+libraries/ospray_studio: Update maintainer email.
+libraries/python3-imapclient: Update maintainer email.
+libraries/qt-avif-image-plugin: Updated for version 0.10.7.
+libraries/qt-jpegxl-image-plugin: Updated for version 0.9.1.
+libraries/qt6keychain: Update maintainer email.
+libraries/qxmpp: Update maintainer email.
+libraries/rkcommon: Update maintainer email.
+libraries/spandsp: Update maintainer email.
+libraries/tktray: Update maintainer email.
+libraries/usrsctp: Update maintainer email.
+libraries/valijson: Update maintainer email.
+libraries/vcglib: Update maintainer email.
+libraries/webrtc-audio-processing: Update maintainer email.
+libraries/wslay: Update maintainer email.
+libraries/xapp: Updated for version 3.4.0
+misc/ascii: Updated for version 3.33.
+misc/dejsonlz4: Update maintainer email.
+misc/es40: Updated for version 0.93.1
+misc/python3-random-username: Update maintainer email.
+misc/qtspell: Update maintainer email.
+misc/rmlint: Update maintainer email.
+misc/sdcv: Update maintainer email.
+misc/stardict-tools: Update maintainer email.
+misc/zinnia: Update maintainer email.
+multimedia/cinelerra: Update maintainer email.
+multimedia/easyeffects: Update maintainer email.
+multimedia/flvtool2: Update maintainer email.
+multimedia/gstreamer-vaapi: Update maintainer email.
+multimedia/plexmediaserver: Updated for 1.43.5.11079_b3b13e506.
+multimedia/rnnoise: Update maintainer email.
+multimedia/svt-vp9: Update maintainer email.
+multimedia/systran-faster-whisper-xxl-bin: Update maintainer email.
+multimedia/telepathy-glib: Update maintainer email.
+multimedia/vapoursynth-mvtools: Update maintainer email.
+multimedia/w_scan: Updated for version 20210218.
+multimedia/wxcam: Update maintainer email.
+network/3proxy: Updated for version 1.0.2.
+network/Electrum-bin: Updated for version 4.8.3.
+network/Electrum: Removed (Maintainer request)
+network/bitcoin: Updated for version 29.5.
+network/brave-browser: Updated for version 1.98.62
+network/brave-origin: Updated for version 1.98.62
+network/ceb-tools: Update maintainer email.
+network/cloudflared-bin: Updated for version 2026.10.5.
+network/cloudflared-bin: Updated for version 2026.10.6.
+network/coturn: Update maintainer email.
+network/curl-quic: Update maintainer email.
+network/demagnetize-rs-bin: Update maintainer email.
+network/dino: Update maintainer email.
+network/discord: Version bump to 1.0.167
+network/dropbox: Updated for version 277.4.4974.
+network/dsniff: Update maintainer email.
+network/element-desktop: Updated for version 1.12.33.
+network/flow-tools: Update maintainer email.
+network/franz: Updated for version 6.10.2.
+network/gallery-dl: Updated for version 1.32.18
+network/git-lfs-transfer: Update maintainer email.
+network/helium-browser: Updated for version 0.20.1.1
+network/hping3: Update maintainer email.
+network/imapsync: Added (IMAP transfer tool).
+network/insync: Update maintainer email.
+network/iodine: Updated for version 0.9.0.
+network/jitsi-meet-desktop: Updated for version 2026.10.0
+network/kubectl-bin: Updated for version 1.37.2.
+network/kubectl: update to 1.37.2
+network/libmaxminddb: Update maintainer email.
+network/librewolf: Updated for version 159.0_1
+network/libvarlink: Update maintainer email.
+network/linphone-desktop: Update maintainer email.
+network/mattermost-bin: Update maintainer email.
+network/mullvad-browser: Updated for version 16.0
+network/netmask: Update maintainer email.
+network/nfdump: Update maintainer email.
+network/nginx: Updated for version 1.30.6
+network/nheko: Update maintainer email.
+network/opera: Updated for version 139.0.6053.15
+network/ripe-atlas-cousteau: Added (Python wrapper for RIPE ATLAS API).
+network/ripe-atlas-sagan: Added (Parsing library for RIPE Atlas).
+network/ripe-atlas-tools: Added (CLI client for RIPE Atlas).
+network/rspamd: Updated for version 4.2.3
+network/rtorrent: Updated for version 0.16.26.
+network/softflowd: Update maintainer email.
+network/spawn-fcgi: Update maintainer email.
+network/swift: Update maintainer email.
+network/syncthing: Update for 2.1.7
+network/tailscale: update to 1.104.4
+network/tdlib: Update maintainer email.
+network/tnfsd: Updated for version 26.1015.1+20261003_4aab910.
+network/tor-browser: Updated for version 16.0.
+network/tor: Updated for version 0.4.9.14.
+network/transmission: Updated for version 4.1.4.
+network/unbound: Updated for version 1.26.2.
+network/vivaldi: Updated for version 8.2.4133.96.
+network/waterfox: Updated for version 6.7.7
+network/webex: Updated for version 46.10.0.36143
+network/wechat-universal: Update maintainer email.
+network/whalebird: Updated for version 6.3.1
+network/yt-dlp-bin: Updated for version 2026.10.26.
+network/zen-browser: Updated for version 1.23.4b
+office/LaTeXML: Update maintainer email.
+office/LanguageTool: Update maintainer email.
+office/LibreOffice: Updated for version 26.8.2.2
+office/Logseq: Updated for version 0.10.15.
+office/antiword-xp-rb: Update maintainer email.
+office/antixls: Update maintainer email.
+office/bibclean: Update maintainer email.
+office/bibtex2html: Update maintainer email.
+office/bibutils: Update maintainer email.
+office/catdvi: Update maintainer email.
+office/dspdfviewer: Update maintainer email.
+office/goldendict: Update maintainer email.
+office/hevea: Update maintainer email.
+office/hunspell-french: Update maintainer email.
+office/hunspell-russian-aot: Update maintainer email.
+office/hunspell-russian-kliukvin: Update maintainer email.
+office/hunspell-russian-lebedev: Update maintainer email.
+office/hunspell-russian-wiktionary: Update maintainer email.
+office/ispell-dict-english: Update maintainer email.
+office/ispell-dict-russian-lebedev: Update maintainer email.
+office/nuspell: Update maintainer email.
+office/ocrmypdf: Update maintainer email.
+office/omegat: Update maintainer email.
+office/pandoc-bin: Updated for version 3.13
+office/python3-mintotp: Update maintainer email.
+office/python3-proselint: Update maintainer email.
+office/qownnotes: Updated for version 26.10.15.
+office/treesheets: Update maintainer email.
+office/unaesgcm: Update maintainer email.
+office/vzic: Update maintainer email.
+office/wps-office: removed unused dir
+office/zotero: update to 10.0.7
+perl/perl-CGI-Fast: Update maintainer email.
+perl/perl-Canary-Stability: Update maintainer email.
+perl/perl-Config-Grammar: Update maintainer email.
+perl/perl-Crypt-RC4: Update maintainer email.
+perl/perl-Digest-Perl-MD5: Update maintainer email.
+perl/perl-Error: Updated for version 0.17031.
+perl/perl-File-Slurp: Update maintainer email.
+perl/perl-IO-String: Update maintainer email.
+perl/perl-MIME-tools: Updated for version 5.522.
+perl/perl-Mojo-Pg: Added (Mojolicious interface to postgres).
+perl/perl-Mojolicious: Updated for version 9.53.
+perl/perl-OLE-Storage_Lite: Update maintainer email.
+perl/perl-Parse-RecDescent: Update maintainer email.
+perl/perl-Pod-POM-View-Restructured: Update maintainer email.
+perl/perl-Pod-POM: Update maintainer email.
+perl/perl-SQL-Abstract-Pg: Added (PostgreSQL ext. for SQL::Abstract)
+perl/perl-SQL-Abstract: Added (Generate SQL from Perl structures).
+perl/perl-Spreadsheet-ParseExcel: Update maintainer email.
+perl/perl-String-PerlIdentifier: Updated for version 0.07
+perl/perl-Sub-Uplevel: Update maintainer email.
+perl/perl-Test-Deep: Update maintainer email.
+perl/perl-Text-Unidecode: Update maintainer email.
+perl/perl-Time-Duration: Update maintainer email.
+perl/perl-XML-LibXSLT: Update maintainer email.
+perl/perl-io-uncompress-brotli: Updated for version 0.023.
+perl/perl-xml-libxml: Update maintainer email.
+python/blink-qt: Update maintainer email.
+python/pyscard: Updated for version 2.3.2.
+python/python-uritemplate: Update maintainer email.
+python/python3-aiohttp-oauthlib: Update maintainer email.
+python/python3-application: Update maintainer email.
+python/python3-blessed: Update maintainer email.
+python/python3-bsdiff4: Update maintainer email.
+python/python3-configargparse: Updated for version 1.9.0.
+python/python3-euclid3: Update maintainer email.
+python/python3-eventlib: Update maintainer email.
+python/python3-funcparserlib: Update maintainer email.
+python/python3-gnutls: Update maintainer email.
+python/python3-google-api-python-client: Update maintainer email.
+python/python3-google-auth-httplib2: Update maintainer email.
+python/python3-google-auth-library-python: Update maintainer email.
+python/python3-google-python-api-core: Update maintainer email.
+python/python3-googleapis-common-protos: Update maintainer email.
+python/python3-inflate64: Update maintainer email.
+python/python3-inotify-simple: Update maintainer email.
+python/python3-json5: Updated for version 0.17.3.
+python/python3-lxml_html_clean: Update maintainer email.
+python/python3-mat2: Update maintainer email.
+python/python3-msrplib: Update maintainer email.
+python/python3-multivolumefile: Update maintainer email.
+python/python3-oauth2client: Update maintainer email.
+python/python3-otr: Update maintainer email.
+python/python3-patch-ng: Update maintainer email.
+python/python3-pgpy: Update maintainer email.
+python/python3-ply: Update maintainer email.
+python/python3-py7zr: Update maintainer email.
+python/python3-pybcj: Update maintainer email.
+python/python3-pydispatcher: Update maintainer email.
+python/python3-pydyf: Update maintainer email.
+python/python3-pypdf: Updated for version 6.21.4
+python/python3-pyphen: Update maintainer email.
+python/python3-pyppmd: Update maintainer email.
+python/python3-pystache: Update maintainer email.
+python/python3-pyzstd: Update maintainer email.
+python/python3-sentry_sdk: Updated for version 2.73.0
+python/python3-sipclients3: Update maintainer email.
+python/python3-sipsimple: Update maintainer email.
+python/python3-socks: Updated for version 3.2.0.
+python/python3-solidpython: Update maintainer email.
+python/python3-sqlobject: Update maintainer email.
+python/python3-sympy: Update maintainer email.
+python/python3-uc-micro-py: Added (Unicode character data expressed).
+python/python3-videohash: Update maintainer email.
+python/python3-weasyprint: Update maintainer email.
+python/python3-xcaplib: Update maintainer email.
+python/python3-xkeysnail: Update maintainer email.
+python/thunarx-python: Update maintainer email.
+python/tzdata: Updated for version 2026.6.
+ruby/rubygem-rubyzip: Update maintainer email.
+system/7zip: Updated for version 26.05
+system/Iosevka-slab: Updated for version 34.9.1
+system/Iosevka: Updated for version 34.9.1
+system/apache-cassandra: Updated for version 4.1.12.
+system/apache-tomcat: Updated for version 10.1.61.
+system/apple-emoji: Update maintainer email.
+system/apple-fonts-Garamond: Update maintainer email.
+system/apple-fonts-NY: Update maintainer email.
+system/apple-fonts-SF: Update maintainer email.
+system/avfs: Updated for version 1.4.0
+system/baskervville-fonts: Update maintainer email.
+system/bfs: update to 4.1.5
+system/bleachbit: Fix doinst.sh
+system/bleachbit: Update for 6.0.6
+system/ck4up: Updated for version 1.6.
+system/conky: Updated for version 1.25.5.
+system/dell_bios_fan_control: Update maintainer email.
+system/docbook-xml: Update maintainer email.
+system/docker-compose: Updated for version 5.6.1
+system/domitian-fonts: Update maintainer email.
+system/edk2-aarch64: Update maintainer email.
+system/erofs-utils: Update maintainer email.
+system/flatpak-xdg-utils: Update maintainer email.
+system/fonts-geist: Added (New geist-font).
+system/google-fonts: Update maintainer email.
+system/gpustat: Update maintainer email.
+system/gyre-fonts: Update maintainer email.
+system/hashcat: Updated for version 8.0.0.
+system/helvum: Update maintainer email.
+system/hexyl: Added (Terminal hex viewer).
+system/i8kutils: Update maintainer email.
+system/intlfonts: Update maintainer email.
+system/ksar: Update maintainer email.
+system/ktls-utils: Update maintainer email.
+system/kurinto-fonts: Update maintainer email.
+system/libertinus-fonts: Update maintainer email.
+system/libre-baskerville-fonts: Update maintainer email.
+system/libre-franklin-fonts: Update maintainer email.
+system/libsignal-protocol-c: Update maintainer email.
+system/limine: Updated for version 12.9.6
+system/linguistics-pro-fonts: Update maintainer email.
+system/literata-fonts: Update maintainer email.
+system/llama.cpp: Update maintainer email.
+system/lssecret: Update maintainer email.
+system/mongo-tools: Updated for version 100.20.0.
+system/montagu-slab-fonts: Update maintainer email.
+system/netdata: Updated for version 2.12.2.
+system/nvidia-driver: Updated for version 595.112.07.
+system/nvidia-kernel: Updated for version 595.112.07.
+system/nvidia-legacy390-driver: Updated script.
+system/ohsnap: Update maintainer email.
+system/opam: Update maintainer email.
+system/otf-ebgaramond-fonts: Update maintainer email.
+system/otf-ibm-plex: Update maintainer email.
+system/overpass-desktop-fonts: Update maintainer email.
+system/overpass-webfonts: Update maintainer email.
+system/partclone: Updated for version 0.3.52
+system/pause-nosignal: Update maintainer email.
+system/pcp: Update maintainer email.
+system/petra-sans-fonts: Update maintainer email.
+system/pkg: Updated for version v0.13.1.
+system/powerpanel: Updated for version 1.4.2.
+system/prometheus: Updated for version 3.15.1
+system/pstate-frequency: Update maintainer email.
+system/python3-nvidia-ml-py: Update maintainer email.
+system/qemu-static: Update maintainer email.
+system/rdiff-backup: Updated for version 2.2.7
+system/rhvoice: Update maintainer email.
+system/rtkit: Update maintainer email.
+system/se98-icon-theme: Update maintainer email.
+system/se98-wm-theme: Update maintainer email.
+system/sensord: Update maintainer email.
+system/smokeping: Update maintainer email.
+system/tarlz: Updated for version 0.32.
+system/terminalia-fonts: Update maintainer email.
+system/thefuck: Fix compatibility with python in -current.
+system/tkinfo: Update maintainer email.
+system/ttf-ibm-plex: Update maintainer email.
+system/ttf-paratype-pt-astra-fact-fonts: Update maintainer email.
+system/ttf-paratype-pt-fonts: Update maintainer email.
+system/tzupdate: Update maintainer email.
+system/ucs-miscfixed-opentype-fonts: Update maintainer email.
+system/watchdog: Update maintainer email.
+system/waypipe: Update maintainer email.
+system/worker: Updated for version 6.0.0
+system/xiccd: Update maintainer email.
+system/yepstat: Update maintainer email.
++--------------------------+
 Sat Oct 24 03:53:31 UTC 2026
 academic/copasi: Updated for version 4.48.311.
 academic/plus42: Updated for version 1.4a
